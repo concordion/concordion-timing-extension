@@ -8,6 +8,9 @@ public class TimerExtension implements ConcordionExtension {
 
     @Override
     public void addTo(ConcordionExtender extender) {
-        extender.withSpecificationProcessingListener(new TimerSpecificationListener());
+        TimerSpecificationListener timerSpec = new TimerSpecificationListener();
+
+        extender.withSpecificationProcessingListener(timerSpec);
+        extender.withExampleListener(timerSpec);
     }
 }
