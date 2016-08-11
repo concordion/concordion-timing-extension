@@ -55,6 +55,20 @@ Inputting [2012-15]( - "#date") is [invalid](- "c:assert-false=checkDateFormat(#
 
 Inputting [2-Jan-2012]( - "#date") is [invalid](- "c:assert-false=checkDateFormat(#date)").
 
+### [Validate postcode](- "example 4")
+
+Inputting [6011]( - "#input") is [valid](- "c:assert-true=checkValidPostCode(#input)").
+
+Inputting [1011]( - "#input") is [valid](- "c:assert-true=checkValidPostCode(#input)").
+
+Inputting [9980]( - "#input") is [valid](- "c:assert-true=checkValidPostCode(#input)").
+
+Inputting [45615611]( - "#input") is [invalid](- "c:assert-false=checkValidPostCode(#input)").
+
+Inputting [15500]( - "#input") is [invalid](- "c:assert-false=checkValidPostCode(#input)").
+
+Inputting [ESTSE%TSE%]( - "#input") is [invalid](- "c:assert-false=checkValidPostCode(#input)").
+
 
 <!--
 

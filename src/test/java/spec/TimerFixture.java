@@ -74,9 +74,16 @@ public class TimerFixture {
         return m.matches();
     }
 
+    // this is not a full validation, just a basic check.
     public boolean checkDateFormat(String dateString){
             return dateString.matches("^\\d+\\-\\d+\\-\\d+");
         }
+
+    // Again, just a basic check
+    public boolean checkValidPostCode(int code){
+            return (code > 0 ) && (code < 10000);
+    }
+
 
     }
 
