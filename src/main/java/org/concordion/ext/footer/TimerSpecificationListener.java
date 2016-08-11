@@ -18,8 +18,8 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void beforeExample(ExampleEvent event) {
+        // store the starting time
         exampleStartTimes.put(event.getExampleName(), System.currentTimeMillis());
-        System.out.println("ExpPre: ms");
     }
 
     @Override
