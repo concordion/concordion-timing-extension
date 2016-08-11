@@ -3,3 +3,4 @@
 *.class
 out/
 build/
+classes/
