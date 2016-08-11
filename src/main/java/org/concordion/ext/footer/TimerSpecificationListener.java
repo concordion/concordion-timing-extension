@@ -26,7 +26,14 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     @Override
     public void afterExample(ExampleEvent event) {
         long startTime = exampleStartTimes.get(event.getExampleName());
-        System.out.println("ExpPost:"  + (System.currentTimeMillis() - startTime) + " ms");
+        long elapsed = (System.currentTimeMillis() - startTime);
+        System.out.println("ExpPost:"  + elapsed  + " ms");
+
+        Element timingOut = new Element("p");
+        timingOut.addStyleClass("time-fig");
+        timingOut.appendText(elapsed + "ms");
+        event.getElement()
+                .appendChild(timingOut);
     }
 
     @Override
@@ -38,5 +45,10 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     public void afterProcessingSpecification(SpecificationProcessingEvent event) {
         long totalTime = System.currentTimeMillis() - startSpecTime;
         System.out.println("SpecTime: " + totalTime + "ms");
+
+        Element toggleButton = new Element("p");
+        toggleButton.appendText("Toggle Timing");
+        toggleButton.setId("toggle-button");
+        event.getRootElement().prependChild(toggleButton);
     }
 }
