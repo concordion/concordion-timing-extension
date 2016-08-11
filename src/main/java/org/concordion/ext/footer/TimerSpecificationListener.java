@@ -2,12 +2,11 @@ package org.concordion.ext.footer;
 
 import org.concordion.api.*;
 import org.concordion.api.listener.*;
-import org.concordion.internal.command.ResultAnnouncer;
 
 import java.util.HashMap;
 import java.util.Map;
 
-// FIXME: currently only gets the total time for the entire spec file not individual runs/examples
+// FIXME: currently only gets the total time for the entire spec file not individual runs of tests
 public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener {
 
     private long startSpecTime;
@@ -27,13 +26,19 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     public void afterExample(ExampleEvent event) {
         long startTime = exampleStartTimes.get(event.getExampleName());
         long elapsed = (System.currentTimeMillis() - startTime);
-        System.out.println("ExpPost:"  + elapsed  + " ms");
 
+        // creates new <div> container for styling the elapsed time
+        Element timingContainer = new Element("div");
+        timingContainer.addStyleClass("time-fig");
+
+        // creates <p> tag for holding the elapsed time
         Element timingOut = new Element("p");
-        timingOut.addStyleClass("time-fig");
         timingOut.appendText(elapsed + "ms");
-        event.getElement()
-                .appendChild(timingOut);
+
+        timingContainer.appendChild(timingOut);
+
+        // add it to the bottom of the example HTML
+        event.getElement().appendChild(timingContainer);
     }
 
     @Override
@@ -46,10 +51,18 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         long totalTime = System.currentTimeMillis() - startSpecTime;
         System.out.println("SpecTime: " + totalTime + "ms");
 
+        // creates new <div> container for styling the toggle button
+        Element toggleContainer = new Element("div");
+        toggleContainer.setId("toggle-button");
+
+        // creates <a> tag to be clickable and toggle the thing
         Element toggleButton = new Element("a");
         toggleButton.appendText("Toggle Timing");
-        toggleButton.addAttribute("href", "#");
-        toggleButton.setId("toggle-button");
-        event.getRootElement().prependChild(toggleButton);
+        toggleButton.addAttribute("href", "#"); // ensures it goes nowhere
+
+        toggleContainer.appendChild(toggleButton);
+
+        // add it to the top of the concordion HTML
+        event.getRootElement().prependChild(toggleContainer);
     }
 }

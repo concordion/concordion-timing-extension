@@ -8,10 +8,10 @@ window.onload = function() {
             var timing = timings[i];
             console.log(timing);
 
-            if (timing.style.visibility === "hidden") {
-                timing.style.visibility = "visible";
+            if (timing.style.display === "none") {
+                timing.style.display = "block";
             } else {
-                timing.style.visibility = "hidden";
+                timing.style.display = "none";
             }
          }
     };
