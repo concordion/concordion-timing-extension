@@ -46,8 +46,9 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         long totalTime = System.currentTimeMillis() - startSpecTime;
         System.out.println("SpecTime: " + totalTime + "ms");
 
-        Element toggleButton = new Element("p");
+        Element toggleButton = new Element("a");
         toggleButton.appendText("Toggle Timing");
+        toggleButton.addAttribute("href", "#");
         toggleButton.setId("toggle-button");
         event.getRootElement().prependChild(toggleButton);
     }
