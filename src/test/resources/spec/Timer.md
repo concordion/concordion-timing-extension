@@ -69,10 +69,9 @@ Inputting [15500]( - "#input") is [invalid](- "c:assert-false=checkValidPostCode
 
 Inputting [ESTSE%TSE%]( - "#input") is [invalid](- "c:assert-false=checkValidPostCode(#input)").
 
-
 <!--
 
-# [Validate Date of Birth](- "example 3")
+# [Validate Date of Birth](- "example 00")
 
 # [So many last names](- "example 7")
 
@@ -91,15 +90,12 @@ Inputting [ESTSE%TSE%]( - "#input") is [invalid](- "c:assert-false=checkValidPos
 The number [2](- "#num") squares into [4](- "?=sq(#num)")
 
 The number [3](- "#num2") squares into [4](- "?=sq(#num2)")
+-->
 
-
-# [Time Short](- "example 4")
+# [Time Short](- "example 5")
 
 This example should take roughly 100ms [0](- "?=timeShort()")
 
-# [Time Long](- "example 5")
+# [Time Long](- "example 6")
 
-This example should take roughly [1000ms](- "timeLong()")
-
-
--->
+This example should take a long time to show how long times are [formatted](- "timeLong()")

@@ -33,7 +33,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
         // creates <p> tag for holding the elapsed time
         Element timingOut = new Element("p");
-        timingOut.appendText(elapsed + "ms");
+        timingOut.appendText(TimeFormatter.formatMillSec(elapsed));
 
         timingContainer.appendChild(timingOut);
 
