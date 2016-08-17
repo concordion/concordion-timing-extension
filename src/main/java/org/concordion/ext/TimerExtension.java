@@ -5,6 +5,11 @@ import org.concordion.api.extension.ConcordionExtender;
 import org.concordion.api.extension.ConcordionExtension;
 import org.concordion.ext.footer.TimerSpecificationListener;
 
+/**
+ * Formats the footer of the Example to include how long the Example took to
+ * run. It also adds a button at the top of the specification to toggle the
+ * visibility of all of the timings via a linked javascript file.
+ */
 public class TimerExtension implements ConcordionExtension {
 
     @Override
