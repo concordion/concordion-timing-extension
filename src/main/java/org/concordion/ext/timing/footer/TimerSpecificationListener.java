@@ -5,7 +5,8 @@ import org.concordion.api.listener.*;
 
 import java.util.*;
 
-public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener {
+// FIXME: currently only gets the total time for the entire spec file not individual runs of tests
+public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener, RunListener {
 
     private long startSpecTime;
     private Map<String, Long> exampleStartTimes;
@@ -69,5 +70,25 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
         // add it to the top of the concordion HTML
         event.getRootElement().getFirstDescendantNamed("body").prependChild(toggleContainer);
+    }
+
+    @Override
+    public void successReported(RunSuccessEvent runSuccessEvent) {
+
+    }
+
+    @Override
+    public void failureReported(RunFailureEvent runFailureEvent) {
+
+    }
+
+    @Override
+    public void ignoredReported(RunIgnoreEvent runIgnoreEvent) {
+
+    }
+
+    @Override
+    public void throwableCaught(ThrowableCaughtEvent event) {
+
     }
 }
