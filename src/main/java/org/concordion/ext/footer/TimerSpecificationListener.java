@@ -3,10 +3,8 @@ package org.concordion.ext.footer;
 import org.concordion.api.*;
 import org.concordion.api.listener.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-// FIXME: currently only gets the total time for the entire spec file not individual runs of tests
 public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener {
 
     private long startSpecTime;
@@ -49,7 +47,6 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     @Override
     public void afterProcessingSpecification(SpecificationProcessingEvent event) {
         long totalTime = System.currentTimeMillis() - startSpecTime;
-        System.out.println("SpecTime: " + totalTime + "ms");
 
         // creates new <div> container for styling the toggle button
         Element toggleContainer = new Element("div");

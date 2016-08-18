@@ -1,11 +1,20 @@
 package org.concordion.ext.footer;
 
+/**
+ * Utility class for formatting time
+ */
 public class TimeFormatter {
 
     private TimeFormatter() {
-
+        throw new IllegalAccessError();
     }
 
+    /**
+     * Format milliseconds into a pretty time string
+     *
+     * @param millSec number of milliseconds to be formatted
+     * @return A string with the two most significant units of time.
+     */
     public static String formatMillSec(long millSec) {
         if (millSec < 0) {
             throw new IllegalArgumentException("Need a positive time.");
