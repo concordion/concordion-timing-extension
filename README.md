@@ -6,9 +6,11 @@ The [demo project](https://github.com/concordion/concordion-timing-extension-dem
 # Introduction
 
 Often it is useful to know how long a given example takes to run. This extension provides this by printing the
-timing to screen for each example.
+timing to screen for each example. The functionality can be toggled on or off via a toggle button located at the top
+right of the results screen.
 
 # Further info
+
 
 <!-- * [Specification](https://github.com/concordion/concordion-timing-extension-demo/spec/spec/concordion/ext/storyboard/Storyboard.html) -->
 <!-- * [API](http://concordion.github.io/concordion-storyboard-extension/api/index.html) -->
