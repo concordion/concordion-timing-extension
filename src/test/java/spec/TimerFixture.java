@@ -6,6 +6,7 @@ import org.concordion.ext.timing.TimerExtension;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
 
+import java.util.Random;
 import java.util.regex.Pattern;
 
 @RunWith(value = ConcordionRunner.class)
@@ -18,6 +19,14 @@ public class TimerFixture {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public String potato() {
+        return "potato";
+    }
+
+    public String randomPotato(String p) {
+        return p + new Random().nextInt();
     }
 
     public boolean checkFirstNameAsEmptyString() {
