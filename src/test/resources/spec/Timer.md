@@ -3,7 +3,17 @@
 This specification uses validation checks for a bank customer form. We will add further specifications
 as a running example for the rest of this project.
 
+### [Whales](- "before")
+[Create Potato String](- "#pString = potato()")
+
+
 ### [Validate First Name](- "example 1")
+
+Potato: [ ](- "c:echo=#pString")
+[ ](- "#pString = randomPotato(#pString)")
+
+Potato: [ ](- "c:echo=#pString")
+
 
 Inputing [Andrew]( - "#firstName") into the name field is [valid](- "c:assert-true=checkFirstName(#firstName)").
 
@@ -22,6 +32,11 @@ Inputing null into the name field is [invalid](- "c:assert-false=checkFirstNameA
 Inputing [Pr@sh@nt]( - "#firstName") into the name field is [invalid](- "c:assert-false=checkFirstName(#firstName)").
 
 ### [Validate email](- "example 2")
+
+Potato: [ ](- "c:echo=#pString")
+[ ](- "#pString = randomPotato(#pString)")
+
+Potato: [ ](- "c:echo=#pString")
 
 Inputing [foooooooooo]( - "#email") is [invalid](- "c:assert-false=checkEmail(#email)").
 
