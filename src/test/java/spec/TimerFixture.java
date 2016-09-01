@@ -28,6 +28,14 @@ public class TimerFixture {
         return p + new Random().nextInt();
     }
 
+    public void sleep() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public boolean checkFirstNameAsEmptyString() {
         return checkFirstName("");
     }

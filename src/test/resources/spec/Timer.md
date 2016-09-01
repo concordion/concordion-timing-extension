@@ -5,6 +5,7 @@ as a running example for the rest of this project.
 
 ### [Whales](- "before")
 [Create Potato String](- "#pString = potato()")
+[ ]( - "sleep()")
 
 
 ### [Validate First Name](- "example 1")

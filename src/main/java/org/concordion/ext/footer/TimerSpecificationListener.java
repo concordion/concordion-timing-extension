@@ -22,6 +22,8 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void afterExample(ExampleEvent event) {
+        System.out.println(event.getResultSummary().isForExample());
+
         long startTime = exampleStartTimes.get(event.getExampleName());
         long elapsed = (System.currentTimeMillis() - startTime);
 
@@ -31,7 +33,11 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
         // creates <p> tag for holding the elapsed time
         Element timingOut = new Element("p");
-        timingOut.appendText(TimeFormatter.formatMillSec(elapsed));
+        if(event.getResultSummary().isForExample()) {
+            timingOut.appendText(TimeFormatter.formatMillSec(elapsed));
+        } else {
+            startSpecTime += elapsed;
+        }
 
         timingContainer.appendChild(timingOut);
 
