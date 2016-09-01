@@ -6,6 +6,7 @@ import org.concordion.ext.timing.TimerExtension;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
 
+import java.util.Random;
 import java.util.regex.Pattern;
 
 @RunWith(value = ConcordionRunner.class)

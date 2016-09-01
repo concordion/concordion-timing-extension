@@ -31,7 +31,15 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
         // creates <p> tag for holding the elapsed time
         Element timingOut = new Element("p");
-        timingOut.appendText(TimeFormatter.formatMillSec(elapsed));
+
+        // Adds the elapsed time to the <p> tag if the event was caused by an example
+        if(event.getResultSummary().isForExample()) {
+            timingOut.appendText(TimeFormatter.formatMillSec(elapsed));
+        } else {
+            // when the event was triggered by a non-example such as a 'before' command, we make sure the
+            // time of execution for such commands are not counted in the total elapsed time.
+            startSpecTime += elapsed;
+        }
 
         timingContainer.appendChild(timingOut);
 
