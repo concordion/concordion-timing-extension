@@ -23,11 +23,6 @@ Inputing [Pr@sh@nt]( - "#firstName") into the name field is [invalid](- "c:asser
 
 ### [Validate email](- "example 2")
 
-Potato: [ ](- "c:echo=#pString")
-[ ](- "#pString = randomPotato(#pString)")
-
-Potato: [ ](- "c:echo=#pString")
-
 Inputing [foooooooooo]( - "#email") is [invalid](- "c:assert-false=checkEmail(#email)").
 
 Inputing [fo@ooooooo@oo@]( - "#email") is [invalid](- "c:assert-false=checkEmail(#email)").
