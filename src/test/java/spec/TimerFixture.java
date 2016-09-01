@@ -21,22 +21,6 @@ public class TimerFixture {
         }
     }
 
-    public String potato() {
-        return "potato";
-    }
-
-    public String randomPotato(String p) {
-        return p + new Random().nextInt();
-    }
-
-    public void sleep() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     public boolean checkFirstNameAsEmptyString() {
         return checkFirstName("");
     }

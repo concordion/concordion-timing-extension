@@ -3,18 +3,7 @@
 This specification uses validation checks for a bank customer form. We will add further specifications
 as a running example for the rest of this project.
 
-### [Whales](- "before")
-[Create Potato String](- "#pString = potato()")
-[ ]( - "sleep()")
-
-
 ### [Validate First Name](- "example 1")
-
-Potato: [ ](- "c:echo=#pString")
-[ ](- "#pString = randomPotato(#pString)")
-
-Potato: [ ](- "c:echo=#pString")
-
 
 Inputing [Andrew]( - "#firstName") into the name field is [valid](- "c:assert-true=checkFirstName(#firstName)").
 
