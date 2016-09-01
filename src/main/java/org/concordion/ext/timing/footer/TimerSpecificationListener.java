@@ -22,8 +22,6 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void afterExample(ExampleEvent event) {
-        System.out.println(event.getResultSummary().isForExample());
-
         long startTime = exampleStartTimes.get(event.getExampleName());
         long elapsed = (System.currentTimeMillis() - startTime);
 
