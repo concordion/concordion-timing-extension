@@ -1,4 +1,4 @@
-package org.concordion.ext.footer;
+package org.concordion.ext.timing.footer;
 
 /**
  * Utility class for formatting time

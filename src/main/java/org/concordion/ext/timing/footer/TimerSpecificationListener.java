@@ -1,4 +1,4 @@
-package org.concordion.ext.footer;
+package org.concordion.ext.timing.footer;
 
 import org.concordion.api.*;
 import org.concordion.api.listener.*;
@@ -11,7 +11,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     private Map<String, Long> exampleStartTimes;
 
     public TimerSpecificationListener() {
-        exampleStartTimes = new HashMap<>();
+        exampleStartTimes = new HashMap<String, Long>();
     }
 
     @Override
@@ -31,7 +31,15 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
         // creates <p> tag for holding the elapsed time
         Element timingOut = new Element("p");
-        timingOut.appendText(TimeFormatter.formatMillSec(elapsed));
+
+        // Adds the elapsed time to the <p> tag if the event was caused by an example
+        if(event.getResultSummary().isForExample()) {
+            timingOut.appendText(TimeFormatter.formatMillSec(elapsed));
+        } else {
+            // when the event was triggered by a non-example such as a 'before' command, we make sure the
+            // time of execution for such commands are not counted in the total elapsed time.
+            startSpecTime += elapsed;
+        }
 
         timingContainer.appendChild(timingOut);
 
@@ -60,6 +68,6 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         toggleContainer.appendChild(toggleButton);
 
         // add it to the top of the concordion HTML
-        event.getRootElement().prependChild(toggleContainer);
+        event.getRootElement().getFirstDescendantNamed("body").prependChild(toggleContainer);
     }
 }
