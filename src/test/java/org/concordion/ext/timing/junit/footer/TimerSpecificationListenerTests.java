@@ -1,4 +1,4 @@
-package org.concordion.ext.junit.footer;
+package org.concordion.ext.timing.junit.footer;
 
 import org.concordion.api.Element;
 import org.concordion.api.Resource;
@@ -6,7 +6,7 @@ import org.concordion.api.Result;
 import org.concordion.api.ResultSummary;
 import org.concordion.api.listener.ExampleEvent;
 import org.concordion.api.listener.SpecificationProcessingEvent;
-import org.concordion.ext.footer.TimerSpecificationListener;
+import org.concordion.ext.timing.footer.TimerSpecificationListener;
 import org.concordion.internal.SingleResultSummary;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,15 +34,19 @@ public class TimerSpecificationListenerTests {
     public void ToggleButtonHasCorrectId() {
 
         // Arrange
+        Element html = new Element("html");
+        html.appendChild(new Element("body"));
         TimerSpecificationListener listener = new TimerSpecificationListener();
-        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/"), new Element("div"));
+        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/"), html);
 
         // Act
         listener.beforeProcessingSpecification(event);
         listener.afterProcessingSpecification(event);
 
         // Assert
-        Element timingContainer = event.getRootElement().getFirstDescendantNamed("div");
+        Element timingContainer = event.getRootElement()
+                .getFirstChildElement("body")
+                .getFirstChildElement("div");
         Assert.assertEquals("Container's id is 'toggle-button'", "toggle-button",
                 timingContainer.getAttributeValue("id"));
     }

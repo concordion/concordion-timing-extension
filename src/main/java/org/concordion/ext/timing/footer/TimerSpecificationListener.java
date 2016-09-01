@@ -1,4 +1,4 @@
-package org.concordion.ext.footer;
+package org.concordion.ext.timing.footer;
 
 import org.concordion.api.*;
 import org.concordion.api.listener.*;
@@ -60,6 +60,6 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         toggleContainer.appendChild(toggleButton);
 
         // add it to the top of the concordion HTML
-        event.getRootElement().prependChild(toggleContainer);
+        event.getRootElement().getFirstDescendantNamed("body").prependChild(toggleContainer);
     }
 }

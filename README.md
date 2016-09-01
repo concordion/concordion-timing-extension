@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/concordion/concordion-timing-extension.svg?branch=master)](https://travis-ci.org/concordion/concordion-timing-extension)
+
 This [Concordion](http://www.concordion.org) extension provides the capability to embed the processing time
 of each specification example at runtime.
 

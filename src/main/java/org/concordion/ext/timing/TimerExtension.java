@@ -1,9 +1,9 @@
-package org.concordion.ext;
+package org.concordion.ext.timing;
 
 import org.concordion.api.Resource;
 import org.concordion.api.extension.ConcordionExtender;
 import org.concordion.api.extension.ConcordionExtension;
-import org.concordion.ext.footer.TimerSpecificationListener;
+import org.concordion.ext.timing.footer.TimerSpecificationListener;
 
 /**
  * Formats the footer of the Example to include how long the Example took to
@@ -19,7 +19,8 @@ public class TimerExtension implements ConcordionExtension {
         extender.withSpecificationProcessingListener(timerSpec);
         extender.withExampleListener(timerSpec);
 
-        extender.withLinkedCSS("/css/style.css", new Resource("/css/timingExtensionStyle.css"));
-        extender.withLinkedJavaScript("/js/toggle.js", new Resource("/js/timingExtensionToggle.js"));
+        extender.withLinkedCSS("/org/concordion/ext/timing/css/style.css", new Resource("/timingExtensionStyle.css"));
+        extender.withLinkedJavaScript("/org/concordion/ext/timing/js/toggle.js", new Resource("/timingExtensionToggle.js"));
+
     }
 }
