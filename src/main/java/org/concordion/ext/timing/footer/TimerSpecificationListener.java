@@ -11,7 +11,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     private Map<String, Long> exampleStartTimes;
 
     public TimerSpecificationListener() {
-        exampleStartTimes = new HashMap<>();
+        exampleStartTimes = new HashMap<String, Long>();
     }
 
     @Override
