@@ -1,0 +1,19 @@
+#toggle-button {
+    overflow: hidden;
+}
+
+#toggle-button a {
+    float: right;
+    margin: 0;
+}
+
+.time-fig {
+    overflow: hidden;
+}
+
+.time-fig p {
+    float: right;
+    margin: 0;
+    color: gray;
+    font-style: italic;
+}
