@@ -54,7 +54,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     public void beforeProcessingSpecification(SpecificationProcessingEvent event) {
         startSpecTime = System.currentTimeMillis();
         System.out.println("beforeProcessingSpecification!");
-
+        //store starting time
         runStartTimes.put(event.getResource().getName(), System.currentTimeMillis());
         System.out.println(event.getResource().getName() + " : " + System.currentTimeMillis());
         //System.out.println(event.getResource().getName() + " : " + event.getResource().getPath());
@@ -81,6 +81,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void successReported(RunSuccessEvent runSuccessEvent) {
+        
         System.out.println(runSuccessEvent.getElement().getAttributeValue("href"));
         String fileNameHtml = runSuccessEvent.getElement().getAttributeValue("href").replace(".md", ".html");
         System.out.println("fileNameHtml:" + fileNameHtml);
@@ -97,7 +98,8 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         //System.out.println("totalTime: "+totalTime);
         System.out.println(runSuccessEvent.getResultSummary().getSpecificationDescription());
         System.out.println(runSuccessEvent.getResultSummary().getImplementationStatus());
-        System.out.println("apples!");
+
+        System.out.println("RunSuccessEvent : " + runSuccessEvent.toString());
 }
 
     @Override
@@ -119,12 +121,12 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         System.out.println(runFailureEvent.getResultSummary().getSpecificationDescription());
         System.out.println(runFailureEvent.getResultSummary().getImplementationStatus());
         //System.out.println(runFailureEvent);
-        System.out.println("apples1!");
+        System.out.println("RunFailureEvent : " + runFailureEvent.toString());
     }
 
     @Override
     public void ignoredReported(RunIgnoreEvent runIgnoreEvent) {
-        //not sure if needed remove is issues
+        //still needs to be tested - quite sure it will work however we couldnt figure out how to trigger a RunIgnoreEvent
         System.out.println(runIgnoreEvent.getElement().getAttributeValue("href"));
         String fileNameHtml = runIgnoreEvent.getElement().getAttributeValue("href").replace(".md", ".html");
         System.out.println("fileNameHtml:" + fileNameHtml);
@@ -143,12 +145,13 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         System.out.println(runIgnoreEvent.getResultSummary().getImplementationStatus());
 
         //System.out.println(runIgnoreEvent);
-        System.out.println("apples2!");
+        System.out.println("RunIgnoreEvent : " + runIgnoreEvent.toString());
     }
 
     @Override
     public void throwableCaught(ThrowableCaughtEvent event) {
-        //not sure if needed remove is issues
+        //not entirely sure if this code is needed here - commented out to prevent possible issues
+        /*
         System.out.println(event.getElement().toXML());
         System.out.println(event.getElement().getAttributeValue("href"));
         String fileNameHtml = event.getElement().getAttributeValue("href").replace(".md", ".html");
@@ -165,7 +168,8 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
         //System.out.println("totalTime: "+totalTime);
         //System.out.println(event);
-        System.out.println("apples3!");
+        */
+        System.out.println("ThrowableCaughtEvent : " + event.toString());
     }
 
     public void writeRunTotalTime(Element element, Long duration) {
