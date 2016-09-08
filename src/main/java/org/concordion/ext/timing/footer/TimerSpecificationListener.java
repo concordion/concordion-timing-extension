@@ -102,18 +102,68 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void failureReported(RunFailureEvent runFailureEvent) {
+        System.out.println(runFailureEvent.getElement().getAttributeValue("href"));
+        String fileNameHtml = runFailureEvent.getElement().getAttributeValue("href").replace(".md", ".html");
+        System.out.println("fileNameHtml:" + fileNameHtml);
+
+        System.out.println("g:" + runStartTimes.get(fileNameHtml));
+
+        //long totalTime = runStartTimes.get() - startSpecTime;
+        Long soCLean = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
+        System.out.println("f: " + soCLean);
+
+        writeRunTotalTime(runFailureEvent.getElement(), soCLean);
+
+
+        //System.out.println("totalTime: "+totalTime);
+        System.out.println(runFailureEvent.getResultSummary().getSpecificationDescription());
+        System.out.println(runFailureEvent.getResultSummary().getImplementationStatus());
         //System.out.println(runFailureEvent);
         System.out.println("apples1!");
     }
 
     @Override
     public void ignoredReported(RunIgnoreEvent runIgnoreEvent) {
+        //not sure if needed remove is issues
+        System.out.println(runIgnoreEvent.getElement().getAttributeValue("href"));
+        String fileNameHtml = runIgnoreEvent.getElement().getAttributeValue("href").replace(".md", ".html");
+        System.out.println("fileNameHtml:" + fileNameHtml);
+
+        System.out.println("g:" + runStartTimes.get(fileNameHtml));
+
+        //long totalTime = runStartTimes.get() - startSpecTime;
+        Long soCLean = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
+        System.out.println("f: " + soCLean);
+
+        writeRunTotalTime(runIgnoreEvent.getElement(), soCLean);
+
+
+        //System.out.println("totalTime: "+totalTime);
+        System.out.println(runIgnoreEvent.getResultSummary().getSpecificationDescription());
+        System.out.println(runIgnoreEvent.getResultSummary().getImplementationStatus());
+
         //System.out.println(runIgnoreEvent);
         System.out.println("apples2!");
     }
 
     @Override
     public void throwableCaught(ThrowableCaughtEvent event) {
+        //not sure if needed remove is issues
+
+        System.out.println(event.getElement().getAttributeValue("href"));
+        String fileNameHtml = event.getElement().getAttributeValue("href").replace(".md", ".html");
+        System.out.println("fileNameHtml:" + fileNameHtml);
+
+        System.out.println("g:" + runStartTimes.get(fileNameHtml));
+
+        //long totalTime = runStartTimes.get() - startSpecTime;
+        Long soCLean = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
+        System.out.println("f: " + soCLean);
+
+        writeRunTotalTime(event.getElement(), soCLean);
+
+
+        //System.out.println("totalTime: "+totalTime);
         //System.out.println(event);
         System.out.println("apples3!");
     }
