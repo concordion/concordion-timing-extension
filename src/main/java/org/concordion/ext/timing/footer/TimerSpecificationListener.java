@@ -6,7 +6,7 @@ import org.concordion.api.listener.*;
 import java.util.*;
 
 // FIXME: currently only gets the total time for the entire spec file not individual runs of tests
-public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener, RunListener {
+public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener, RunListener  {
 
     private long startSpecTime;
     private Map<String, Long> exampleStartTimes;
@@ -149,7 +149,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     @Override
     public void throwableCaught(ThrowableCaughtEvent event) {
         //not sure if needed remove is issues
-
+        System.out.println(event.getElement().toXML());
         System.out.println(event.getElement().getAttributeValue("href"));
         String fileNameHtml = event.getElement().getAttributeValue("href").replace(".md", ".html");
         System.out.println("fileNameHtml:" + fileNameHtml);

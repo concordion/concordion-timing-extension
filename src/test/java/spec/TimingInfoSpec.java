@@ -5,6 +5,7 @@ import org.concordion.ext.timing.TimerExtension;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 
@@ -12,6 +13,19 @@ import java.util.regex.Pattern;
 @RunWith(value = ConcordionRunner.class)
 @Extensions(value = TimerExtension.class)
 public class TimingInfoSpec {
+
+    public void throwRuntimeException() {
+        throw new RuntimeException();
+    }
+
+    public void throwRuntimeException2() throws IOException {
+        throw new IOException();
+    }
+
+    public boolean checkFirstNameUnimpl(String name) {
+        return false;
+    }
+
     public boolean checkFirstName(String name) {
         if (name == null) {
             return false;
