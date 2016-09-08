@@ -10,8 +10,10 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     private long startSpecTime;
     private Map<String, Long> exampleStartTimes;
+    private static Map<String, Long> runStartTimes;
 
     public TimerSpecificationListener() {
+        runStartTimes = new HashMap<String, Long>();
         exampleStartTimes = new HashMap<String, Long>();
     }
 
@@ -51,6 +53,11 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     @Override
     public void beforeProcessingSpecification(SpecificationProcessingEvent event) {
         startSpecTime = System.currentTimeMillis();
+        System.out.println("beforeProcessingSpecification!");
+
+        runStartTimes.put(event.getResource().getName(), System.currentTimeMillis());
+        System.out.println(event.getResource().getName() + " : " + System.currentTimeMillis());
+        //System.out.println(event.getResource().getName() + " : " + event.getResource().getPath());
     }
 
     @Override
@@ -74,21 +81,48 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void successReported(RunSuccessEvent runSuccessEvent) {
+        System.out.println(runSuccessEvent.getElement().getAttributeValue("href"));
+        String fileNameHtml = runSuccessEvent.getElement().getAttributeValue("href").replace(".md", ".html");
+        System.out.println("fileNameHtml:" + fileNameHtml);
 
-    }
+        System.out.println("g:" + runStartTimes.get(fileNameHtml));
+
+        //long totalTime = runStartTimes.get() - startSpecTime;
+        Long soCLean = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
+        System.out.println("f: " + soCLean);
+
+        writeRunTotalTime(runSuccessEvent.getElement(), soCLean);
+
+
+        //System.out.println("totalTime: "+totalTime);
+        System.out.println(runSuccessEvent.getResultSummary().getSpecificationDescription());
+        System.out.println(runSuccessEvent.getResultSummary().getImplementationStatus());
+        System.out.println("apples!");
+}
 
     @Override
     public void failureReported(RunFailureEvent runFailureEvent) {
-
+        //System.out.println(runFailureEvent);
+        System.out.println("apples1!");
     }
 
     @Override
     public void ignoredReported(RunIgnoreEvent runIgnoreEvent) {
-
+        //System.out.println(runIgnoreEvent);
+        System.out.println("apples2!");
     }
 
     @Override
     public void throwableCaught(ThrowableCaughtEvent event) {
+        //System.out.println(event);
+        System.out.println("apples3!");
+    }
 
+    public void writeRunTotalTime(Element element, Long duration) {
+        Element durationTag = new Element("span");
+        durationTag.addAttribute("class", "time-fig-inline");
+        durationTag.appendText(" (" + TimeFormatter.formatMillSec(duration) + ")");
+
+        element.appendSister(durationTag);
     }
 }
