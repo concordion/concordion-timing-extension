@@ -54,7 +54,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     public void beforeProcessingSpecification(SpecificationProcessingEvent event) {
         startSpecTime = System.currentTimeMillis();
         System.out.println("beforeProcessingSpecification!");
-        //store starting time
+        //adds start time and name of a spec into the map
         runStartTimes.put(event.getResource().getName(), System.currentTimeMillis());
         System.out.println(event.getResource().getName() + " : " + System.currentTimeMillis());
         //System.out.println(event.getResource().getName() + " : " + event.getResource().getPath());
@@ -81,7 +81,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void successReported(RunSuccessEvent runSuccessEvent) {
-        
+
         System.out.println(runSuccessEvent.getElement().getAttributeValue("href"));
         String fileNameHtml = runSuccessEvent.getElement().getAttributeValue("href").replace(".md", ".html");
         System.out.println("fileNameHtml:" + fileNameHtml);
@@ -150,25 +150,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void throwableCaught(ThrowableCaughtEvent event) {
-        //not entirely sure if this code is needed here - commented out to prevent possible issues
-        /*
-        System.out.println(event.getElement().toXML());
-        System.out.println(event.getElement().getAttributeValue("href"));
-        String fileNameHtml = event.getElement().getAttributeValue("href").replace(".md", ".html");
-        System.out.println("fileNameHtml:" + fileNameHtml);
-
-        System.out.println("g:" + runStartTimes.get(fileNameHtml));
-
-        //long totalTime = runStartTimes.get() - startSpecTime;
-        Long soCLean = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
-        System.out.println("f: " + soCLean);
-
-        writeRunTotalTime(event.getElement(), soCLean);
-
-
-        //System.out.println("totalTime: "+totalTime);
-        //System.out.println(event);
-        */
+        //unused function unsure if deleting this causes errors
         System.out.println("ThrowableCaughtEvent : " + event.toString());
     }
 
