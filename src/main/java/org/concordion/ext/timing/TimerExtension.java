@@ -12,6 +12,8 @@ import org.concordion.ext.timing.footer.TimerSpecificationListener;
  */
 public class TimerExtension implements ConcordionExtension {
 
+    private String toggleIconPath = "";
+
     @Override
     public void addTo(ConcordionExtender extender) {
         TimerSpecificationListener timerSpec = new TimerSpecificationListener();
@@ -22,7 +24,12 @@ public class TimerExtension implements ConcordionExtension {
 
         extender.withLinkedCSS("/org/concordion/ext/timing/css/style.css", new Resource("/timingExtensionStyle.css"));
         extender.withLinkedJavaScript("/org/concordion/ext/timing/js/toggle.js", new Resource("/timingExtensionToggle.js"));
-        extender.withResource("/org/concordion/ext/timing/Resource/stopwatch.png", new Resource("/stopwatch.png"));
+        extender.withResource(toggleIconPath , new Resource("/toggleIcon.png"));
         extender.withResource("/org/concordion/ext/timing/Resource/cog.png", new Resource("/cog.png"));
+    }
+
+    public ConcordionExtension withIcon(String newIconPath) {
+        toggleIconPath = newIconPath;
+        return this;
     }
 }
