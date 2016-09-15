@@ -8,23 +8,25 @@ import java.util.*;
 // FIXME: currently only gets the total time for the entire spec file not individual runs of tests
 public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener, RunListener  {
 
-    private long startSpecTime;
-    private Map<String, Long> exampleStartTimes;
-    private static Map<String, Long> runStartTimes;
+    private long startSpecTime; // Start Time of spec (Can be overridden)
+    private Map<String, Long> exampleStartTimes; // Stores the start time of each example
+    private static Map<String, Long> runStartTimes; // Stores the start time of each run
 
     public TimerSpecificationListener() {
+        // Initialise Variables
         runStartTimes = new HashMap<String, Long>();
         exampleStartTimes = new HashMap<String, Long>();
     }
 
     @Override
     public void beforeExample(ExampleEvent event) {
-        // store the starting time
+        // Store the starting time when a example is started
         exampleStartTimes.put(event.getExampleName(), System.currentTimeMillis());
     }
 
     @Override
     public void afterExample(ExampleEvent event) {
+        // Generation the time elapsed since start time for the specific example
         long startTime = exampleStartTimes.get(event.getExampleName());
         long elapsed = (System.currentTimeMillis() - startTime);
 
@@ -44,6 +46,8 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
             startSpecTime += elapsed;
         }
 
+        // Add the timing duration to the timing container
+        // (as the duration cannot be added directly to the root element)
         timingContainer.appendChild(timingOut);
 
         // add it to the bottom of the example HTML
@@ -52,17 +56,14 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void beforeProcessingSpecification(SpecificationProcessingEvent event) {
+        // Store starting time when the specification is executed.
         startSpecTime = System.currentTimeMillis();
-        System.out.println("beforeProcessingSpecification!");
-        //store starting time
         runStartTimes.put(event.getResource().getName(), System.currentTimeMillis());
-        System.out.println(event.getResource().getName() + " : " + System.currentTimeMillis());
-        //System.out.println(event.getResource().getName() + " : " + event.getResource().getPath());
     }
 
     @Override
     public void afterProcessingSpecification(SpecificationProcessingEvent event) {
-        long totalTime = System.currentTimeMillis() - startSpecTime;
+        // Add toggle button to specification sheet
 
         // creates new <div> container for styling the toggle button
         Element toggleContainer = new Element("div");
@@ -73,6 +74,8 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         toggleButton.appendText("Toggle Timing");
         toggleButton.addAttribute("href", "#"); // ensures it goes nowhere
 
+        // Add the timing duration to the timing container
+        // (as the duration cannot be added directly to the root element)
         toggleContainer.appendChild(toggleButton);
 
         // add it to the top of the concordion HTML
@@ -81,102 +84,55 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     @Override
     public void successReported(RunSuccessEvent runSuccessEvent) {
-        
-        System.out.println(runSuccessEvent.getElement().getAttributeValue("href"));
+        // Get filename of html specification to be used to retrieve the start time of the run
         String fileNameHtml = runSuccessEvent.getElement().getAttributeValue("href").replace(".md", ".html");
-        System.out.println("fileNameHtml:" + fileNameHtml);
 
-        System.out.println("g:" + runStartTimes.get(fileNameHtml));
+        // Calculate the time elasped of the specific run commnad
+        Long timeElapsed = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
 
-        //long totalTime = runStartTimes.get() - startSpecTime;
-        Long soCLean = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
-        System.out.println("f: " + soCLean);
-
-        writeRunTotalTime(runSuccessEvent.getElement(), soCLean);
-
-
-        //System.out.println("totalTime: "+totalTime);
-        System.out.println(runSuccessEvent.getResultSummary().getSpecificationDescription());
-        System.out.println(runSuccessEvent.getResultSummary().getImplementationStatus());
-
-        System.out.println("RunSuccessEvent : " + runSuccessEvent.toString());
-}
+        // Write the time elapsed to the root element
+        writeRunTotalTime(runSuccessEvent.getElement(), timeElapsed);
+    }
 
     @Override
     public void failureReported(RunFailureEvent runFailureEvent) {
-        System.out.println(runFailureEvent.getElement().getAttributeValue("href"));
+        // Get filename of html specification to be used to retrieve the start time of the run
         String fileNameHtml = runFailureEvent.getElement().getAttributeValue("href").replace(".md", ".html");
-        System.out.println("fileNameHtml:" + fileNameHtml);
 
-        System.out.println("g:" + runStartTimes.get(fileNameHtml));
+        // Calculate the time elasped of the specific run commnad
+        Long timeElapsed = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
 
-        //long totalTime = runStartTimes.get() - startSpecTime;
-        Long soCLean = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
-        System.out.println("f: " + soCLean);
-
-        writeRunTotalTime(runFailureEvent.getElement(), soCLean);
-
-
-        //System.out.println("totalTime: "+totalTime);
-        System.out.println(runFailureEvent.getResultSummary().getSpecificationDescription());
-        System.out.println(runFailureEvent.getResultSummary().getImplementationStatus());
-        //System.out.println(runFailureEvent);
-        System.out.println("RunFailureEvent : " + runFailureEvent.toString());
+        // Write the time elapsed to the root element
+        writeRunTotalTime(runFailureEvent.getElement(), timeElapsed);
     }
 
     @Override
     public void ignoredReported(RunIgnoreEvent runIgnoreEvent) {
-        //still needs to be tested - quite sure it will work however we couldnt figure out how to trigger a RunIgnoreEvent
-        System.out.println(runIgnoreEvent.getElement().getAttributeValue("href"));
+        // Get filename of html specification to be used to retrieve the start time of the run
         String fileNameHtml = runIgnoreEvent.getElement().getAttributeValue("href").replace(".md", ".html");
-        System.out.println("fileNameHtml:" + fileNameHtml);
 
-        System.out.println("g:" + runStartTimes.get(fileNameHtml));
+        // Calculate the time elasped of the specific run commnad
+        Long timeElapsed = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
 
-        //long totalTime = runStartTimes.get() - startSpecTime;
-        Long soCLean = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
-        System.out.println("f: " + soCLean);
-
-        writeRunTotalTime(runIgnoreEvent.getElement(), soCLean);
-
-
-        //System.out.println("totalTime: "+totalTime);
-        System.out.println(runIgnoreEvent.getResultSummary().getSpecificationDescription());
-        System.out.println(runIgnoreEvent.getResultSummary().getImplementationStatus());
-
-        //System.out.println(runIgnoreEvent);
-        System.out.println("RunIgnoreEvent : " + runIgnoreEvent.toString());
+        // Write the time elapsed to the root element
+        writeRunTotalTime(runIgnoreEvent.getElement(), timeElapsed);
     }
 
     @Override
     public void throwableCaught(ThrowableCaughtEvent event) {
-        //not entirely sure if this code is needed here - commented out to prevent possible issues
-        /*
-        System.out.println(event.getElement().toXML());
-        System.out.println(event.getElement().getAttributeValue("href"));
-        String fileNameHtml = event.getElement().getAttributeValue("href").replace(".md", ".html");
-        System.out.println("fileNameHtml:" + fileNameHtml);
-
-        System.out.println("g:" + runStartTimes.get(fileNameHtml));
-
-        //long totalTime = runStartTimes.get() - startSpecTime;
-        Long soCLean = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
-        System.out.println("f: " + soCLean);
-
-        writeRunTotalTime(event.getElement(), soCLean);
-
-
-        //System.out.println("totalTime: "+totalTime);
-        //System.out.println(event);
-        */
-        System.out.println("ThrowableCaughtEvent : " + event.toString());
+        // Code Not called.
     }
 
-    public void writeRunTotalTime(Element element, Long duration) {
+    /**
+     * Writes the duration next to element and formats the time.
+     *
+     * @param element The sister/parent element to append the the duration to.
+     * @param duration The timing duration of an example, spec or run
+     */
+    private void writeRunTotalTime(Element element, Long duration) {
         Element durationTag = new Element("span");
         durationTag.addAttribute("class", "time-fig-inline");
         durationTag.appendText(" (" + TimeFormatter.formatMillSec(duration) + ")");
-
         element.appendSister(durationTag);
     }
 }
