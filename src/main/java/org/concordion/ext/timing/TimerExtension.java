@@ -21,6 +21,7 @@ public class TimerExtension implements ConcordionExtension {
 
         extender.withLinkedCSS("/org/concordion/ext/timing/css/style.css", new Resource("/timingExtensionStyle.css"));
         extender.withLinkedJavaScript("/org/concordion/ext/timing/js/toggle.js", new Resource("/timingExtensionToggle.js"));
-
+        extender.withResource("/org/concordion/ext/timing/Resource/stopwatch.png", new Resource("/stopwatch.png"));
+        extender.withResource("/org/concordion/ext/timing/Resource/cog.png", new Resource("/cog.png"));
     }
 }
