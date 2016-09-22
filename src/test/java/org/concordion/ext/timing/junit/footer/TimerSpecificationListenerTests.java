@@ -71,7 +71,7 @@ public class TimerSpecificationListenerTests {
         element.appendChild(aTag);
 
         // Create events to trigger the listener
-        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/test.html"), element);
+        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/spec/test.html"), element);
         RunSuccessEvent runSuccessEvent = new RunSuccessEvent(aTag, summary);
 
         // Add events to listener to trigger them
@@ -109,7 +109,7 @@ public class TimerSpecificationListenerTests {
         element.appendChild(aTag);
 
         // Create events to trigger the listener
-        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/test.html"), element);
+        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/spec/test.html"), element);
         RunFailureEvent runFailureEvent = new RunFailureEvent(aTag, summary);
 
         // Add events to listener to trigger them
@@ -147,7 +147,7 @@ public class TimerSpecificationListenerTests {
         element.appendChild(aTag);
 
         // Create events to trigger the listener
-        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/test.html"), element);
+        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/spec/test.html"), element);
         RunIgnoreEvent runIgnoreEvent = new RunIgnoreEvent(aTag, summary);
 
         // Add events to listener to trigger them

@@ -1,4 +1,4 @@
-package spec;
+package spec.subSpec;
 
 import org.concordion.api.extension.Extensions;
 import org.concordion.ext.timing.TimerExtension;
