@@ -78,12 +78,6 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         toggleIcon.addAttribute("height", "24");
         toggleIcon.addAttribute("width", "24");
 
-//        Element iconSettings = new Element("img");
-//        iconSettings.addStyleClass("cog");
-//        iconSettings.addAttribute("src", "../cog.png");
-//        iconSettings.addAttribute("height", "24");
-//        iconSettings.addAttribute("width", "24");
-
         // ensures it goes nowhere
 
         //toggleContainer.appendChild(toggleButton);

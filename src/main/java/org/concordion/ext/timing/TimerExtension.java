@@ -13,7 +13,7 @@ import org.concordion.ext.timing.footer.TimerSpecificationListener;
  */
 public class TimerExtension implements ConcordionExtension {
 
-    private String toggleIconPath = "";
+    private String toggleIconPath = "/org/concordion/ext/timing/Resource/stopwatch.png";
 
     @Override
     public void addTo(ConcordionExtender extender) {
