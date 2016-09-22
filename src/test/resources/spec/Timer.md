@@ -11,6 +11,17 @@ Inputing [David]( - "#firstName") into the name field is [valid](- "c:assert-tru
 
 Inputing [Steven]( - "#firstName") into the name field is [valid](- "c:assert-true=checkFirstName(#firstName)").
 
+Inputing [Stephen]( - "#firstName") into the name field is [valid](- "c:assert-true=checkFirstName(#firstName)").
+
+Inputing [12345]( - "#firstName") into the name field is [valid](- "c:assert-false=checkFirstName(#firstName)").
+
+Inputing Empty String into the name field is [invalid](- "c:assert-false=checkFirstNameAsEmptyString()").
+
+Inputing null into the name field is [invalid](- "c:assert-false=checkFirstNameAsNull()").
+
+Inputing [Pr@sh@nt]( - "#firstName") into the name field is [invalid](- "c:assert-false=checkFirstName(#firstName)").
+
+
 ### [Validate email](- "example 2")
 
 Inputing [foooooooooo]( - "#email") is [invalid](- "c:assert-false=checkEmail(#email)").
