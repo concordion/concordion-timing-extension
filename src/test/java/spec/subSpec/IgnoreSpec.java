@@ -1,31 +1,19 @@
-package spec;
+package spec.subSpec;
 
 import org.concordion.api.extension.Extensions;
 import org.concordion.ext.timing.TimerExtension;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
 
-import java.io.IOException;
 import java.util.regex.Pattern;
 
-
-
+/**
+ * Created by Andrew on 15/09/2016.
+ */
 @RunWith(value = ConcordionRunner.class)
 @Extensions(value = TimerExtension.class)
-public class TimingInfoSpec {
 
-    public void throwRuntimeException() {
-        throw new RuntimeException();
-    }
-
-    public void throwRuntimeException2() throws IOException {
-        throw new IOException();
-    }
-
-    public boolean checkFirstNameUnimpl(String name) {
-        return false;
-    }
-
+public class IgnoreSpec {
     public boolean checkFirstName(String name) {
         if (name == null) {
             return false;
