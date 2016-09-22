@@ -2,6 +2,22 @@
     overflow: hidden;
 }
 
+#toggle-button img{
+    float: right;
+
+}
+
+#toggle-button img:hover{
+    cursor: pointer;
+
+}
+
+#toggle-button img.cog{
+    float: left;
+    padding: 5px;
+
+}
+
 #toggle-button a {
     float: right;
     margin: 0;
@@ -17,3 +33,4 @@
     color: gray;
     font-style: italic;
 }
+

@@ -8,6 +8,32 @@ ext {
             id 'nigel.charman'
             name 'Nigel Charman'
         }
+
+        developer {
+            id 'david.barnett'
+            name 'David Barnett'
+        }
+
+        developer {
+            id 'andrew.daly'
+            name 'Andrew Daly'
+        }
+
+        developer {
+            id 'prashant.bhikhu'
+            name 'Prashant Bhikhu'
+        }
+
+        developer {
+            id 'steven.turrell'
+            name 'Steven Turrell'
+        }
+
+        developer {
+            id 'andrew.mooney'
+            name 'Andrew Mooney'
+        }
+
     }
     inceptionYear = '2016'
 }
