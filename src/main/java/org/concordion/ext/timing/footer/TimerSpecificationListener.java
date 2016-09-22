@@ -5,7 +5,6 @@ import org.concordion.api.listener.*;
 
 import java.util.*;
 
-// FIXME: currently only gets the total time for the entire spec file not individual runs of tests
 public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener, RunListener  {
 
     private long startSpecTime; // Start Time of spec (Can be overridden)
