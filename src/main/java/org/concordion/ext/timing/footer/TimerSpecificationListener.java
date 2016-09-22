@@ -74,21 +74,15 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         // creates <img> tag for the clickable icon that toggles the timing data
         Element toggleIcon = new Element("img");
         toggleIcon.setId("toggleImg");
-        toggleIcon.addAttribute("src", "../stopwatch.png");
+        toggleIcon.addAttribute("src", "../toggleIcon.png");
         toggleIcon.addAttribute("height", "24");
         toggleIcon.addAttribute("width", "24");
-
-        Element iconSettings = new Element("img");
-        iconSettings.addStyleClass("cog");
-        iconSettings.addAttribute("src", "../cog.png");
-        iconSettings.addAttribute("height", "24");
-        iconSettings.addAttribute("width", "24");
 
         // ensures it goes nowhere
 
         //toggleContainer.appendChild(toggleButton);
         toggleContainer.appendChild(toggleIcon);
-        toggleContainer.appendChild(iconSettings);
+        //toggleContainer.appendChild(iconSettings);
 
         // add it to the top of the concordion HTML
         event.getRootElement().getFirstDescendantNamed("body").prependChild(toggleContainer);
