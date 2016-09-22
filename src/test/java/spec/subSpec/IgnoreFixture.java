@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 @RunWith(value = ConcordionRunner.class)
 @Extensions(value = TimerExtension.class)
 
-public class IgnoreSpec {
+public class IgnoreFixture {
     public boolean checkFirstName(String name) {
         if (name == null) {
             return false;

@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 
 @RunWith(value = ConcordionRunner.class)
-public class TimingInfoSpec {
+public class IgnoreSuccessFixture {
 
     @Extension
     ConcordionExtension timingExtension = new TimerExtension()
