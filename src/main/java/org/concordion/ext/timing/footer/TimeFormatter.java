@@ -5,6 +5,11 @@ package org.concordion.ext.timing.footer;
  */
 public class TimeFormatter {
 
+    private static String hourWord = "h";
+    private static String minuteWord = "m";
+    private static String secondWord = "s";
+    private static String milisecWord = "ms";
+
     private TimeFormatter() {
         throw new IllegalAccessError();
     }
@@ -25,15 +30,23 @@ public class TimeFormatter {
         long hours   = minutes / 60;
 
         if (hours > 0) {
-            return String.format("%dh %dm", hours, minutes % 60);
+            return String.format("%d%s %d%s", hours, hourWord, minutes % 60, minuteWord);
         } else if (minutes > 0) {
-            return String.format("%dm %ds", minutes, seconds % 60);
+            return String.format("%d%s %d%s", minutes, minuteWord, seconds % 60, secondWord);
         } else if (seconds > 0) {
-            return String.format("%ds %dms", seconds, millSec % 1000);
+            return String.format("%d%s %d%s", seconds, secondWord, millSec % 1000, milisecWord);
         } else {
-            return String.format("%dms", millSec);
+            return String.format("%d%s", millSec, milisecWord);
         }
 
     }
+
+    public static void setFormatString(String hours, String mins, String secs, String miliSecs){
+        TimeFormatter.hourWord = hours;
+        TimeFormatter.minuteWord = mins;
+        TimeFormatter.secondWord = secs;
+        TimeFormatter.milisecWord = miliSecs;
+    }
+
 
 }
