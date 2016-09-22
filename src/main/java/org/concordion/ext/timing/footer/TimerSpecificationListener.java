@@ -10,11 +10,10 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
     private long startSpecTime; // Start Time of spec (Can be overridden)
     private Map<String, Long> exampleStartTimes; // Stores the start time of each example
-    private static Map<String, Long> runStartTimes; // Stores the start time of each run
+    private static Map<String, Long> runStartTimes = new HashMap<String, Long>(); // Stores the start time of each run
 
     public TimerSpecificationListener() {
         // Initialise Variables
-        runStartTimes = new HashMap<String, Long>();
         exampleStartTimes = new HashMap<String, Long>();
     }
 
@@ -58,7 +57,11 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     public void beforeProcessingSpecification(SpecificationProcessingEvent event) {
         // Store starting time when the specification is executed.
         startSpecTime = System.currentTimeMillis();
-        runStartTimes.put(event.getResource().getName(), System.currentTimeMillis());
+        //getPath() includes the /spec/ folder which we cant retrieve later so it it removed from path
+        String path = event.getResource().getPath();
+        int i = path.indexOf("/",1);
+        path = path.substring(i+1);
+        runStartTimes.put(path, System.currentTimeMillis());
     }
 
     @Override
