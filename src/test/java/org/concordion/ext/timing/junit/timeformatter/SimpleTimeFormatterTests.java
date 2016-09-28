@@ -1,19 +1,19 @@
 package org.concordion.ext.timing.junit.timeformatter;
 
-import org.concordion.ext.timing.TimerExtension;
+import org.concordion.ext.timing.timeformatter.SimpleTimeFormatter;
 import org.concordion.ext.timing.timeformatter.TimeFormatter;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TimeFormatterTests {
-
-    static { TimerExtension.withTimeFormat( "h", "m", "s", "ms"); }
-
+public class SimpleTimeFormatterTests {
 
     @Test
     public void FormatZero() {
+        // Arrange
+        TimeFormatter timeFormatter = new SimpleTimeFormatter();
+
         // Act
-        String result = TimeFormatter.formatMillSec(0);
+        String result = timeFormatter.formatTime(0);
 
         // Assert
         Assert.assertEquals("Should be 0ms",result, "0ms");
@@ -21,15 +21,21 @@ public class TimeFormatterTests {
 
     @Test(expected=IllegalArgumentException.class)
     public void FormatNegative() {
+        // Arrange
+        TimeFormatter timeFormatter = new SimpleTimeFormatter();
+
         // Act
-        TimeFormatter.formatMillSec(-1000);
+        timeFormatter.formatTime(-1000);
     }
 
 
     @Test
     public void FormatMilliseconds() {
+        // Arrange
+        TimeFormatter timeFormatter = new SimpleTimeFormatter();
+
         // Act
-        String result = TimeFormatter.formatMillSec(100);
+        String result = timeFormatter.formatTime(100);
 
         // Assert
         Assert.assertEquals("Should be 100ms",result, "100ms");
@@ -37,8 +43,11 @@ public class TimeFormatterTests {
 
     @Test
     public void FormatSeconds() {
+        // Arrange
+        TimeFormatter timeFormatter = new SimpleTimeFormatter();
+
         // Act
-        String result = TimeFormatter.formatMillSec(8100);
+        String result = timeFormatter.formatTime(8100);
 
         // Assert
         Assert.assertEquals("Should be 8s 100ms",result, "8s 100ms");
@@ -46,8 +55,11 @@ public class TimeFormatterTests {
 
     @Test
     public void FormatMinutes() {
+        // Arrange
+        TimeFormatter timeFormatter = new SimpleTimeFormatter();
+
         // Act
-        String result = TimeFormatter.formatMillSec(248000);
+        String result = timeFormatter.formatTime(248000);
 
         // Assert
         Assert.assertEquals("Should be 4m 8s",result, "4m 8s");
@@ -56,8 +68,11 @@ public class TimeFormatterTests {
 
     @Test
     public void FormatHours() {
+        // Arrange
+        TimeFormatter timeFormatter = new SimpleTimeFormatter();
+
         // Act
-        String result = TimeFormatter.formatMillSec(18240000);
+        String result = timeFormatter.formatTime(18240000);
 
         // Assert
         Assert.assertEquals("Should be 5h 4m",result, "5h 4m");
@@ -65,40 +80,37 @@ public class TimeFormatterTests {
 
     @Test
     public void FormatWithCustomizedStrings1() {
-        TimerExtension.withTimeFormat( "hours", "minutes", "seconds", "milliseconds");
+        // Arrange
+        TimeFormatter timeFormatter = new SimpleTimeFormatter("hours", "minutes", "seconds", "milliseconds");
 
         // Act
-        String result = TimeFormatter.formatMillSec(0);
+        String result = timeFormatter.formatTime(0);
 
         // Assert
         Assert.assertEquals("Should be 0milliseconds", result, "0milliseconds");
-
-        TimerExtension.withTimeFormat( "h", "m", "s", "ms");
     }
 
     @Test
     public void FormatWithCustomizedStrings2() {
-        TimerExtension.withTimeFormat( "hours", "minutes", "seconds", "milliseconds");
+        // Arrange
+        TimeFormatter timeFormatter = new SimpleTimeFormatter("hours", "minutes", "seconds", "milliseconds");
 
         // Act
-        String result = TimeFormatter.formatMillSec(8100);
+        String result = timeFormatter.formatTime(8100);
 
         // Assert
         Assert.assertEquals("Should be 8seconds 100milliseconds", result, "8seconds 100milliseconds");
-
-        TimerExtension.withTimeFormat( "h", "m", "s", "ms");
     }
 
     @Test
     public void FormatWithCustomizedStrings3() {
-        TimerExtension.withTimeFormat( "hours", "minutes", "seconds", "milliseconds");
+        // Arrange
+        TimeFormatter timeFormatter = new SimpleTimeFormatter("hours", "minutes", "seconds", "milliseconds");
 
         // Act
-        String result = TimeFormatter.formatMillSec(18240000);
+        String result = timeFormatter.formatTime(18240000);
 
         // Assert
         Assert.assertEquals("Should be 5hours 4minutes", result, "5hours 4minutes");
-
-        TimerExtension.withTimeFormat( "h", "m", "s", "ms");
     }
 }
