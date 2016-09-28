@@ -1,19 +1,22 @@
-package org.concordion.ext.timing.footer;
+package org.concordion.ext.timing.timeformatter;
 
 import org.concordion.api.*;
 import org.concordion.api.listener.*;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener, RunListener  {
 
     private long startSpecTime; // Start Time of spec (Can be overridden)
     private Map<String, Long> exampleStartTimes; // Stores the start time of each example
-    private static Map<String, Long> runStartTimes = new HashMap<String, Long>(); // Stores the start time of each run
+    private static Map<String, Long> runStartTimes = new ConcurrentHashMap<String, Long>(); // Stores the start time of each run
+    private final TimeFormatter timeFormatter;
 
-    public TimerSpecificationListener() {
+    public TimerSpecificationListener(TimeFormatter timeFormatter) {
         // Initialise Variables
         exampleStartTimes = new HashMap<String, Long>();
+        this.timeFormatter = timeFormatter;
     }
 
     @Override
@@ -37,7 +40,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
 
         // Adds the elapsed time to the <p> tag if the event was caused by an example
         if(event.getResultSummary().isForExample()) {
-            timingOut.appendText(TimeFormatter.formatMillSec(elapsed));
+            timingOut.appendText(timeFormatter.formatTime(elapsed));
         } else {
             // when the event was triggered by a non-example such as a 'before' command, we make sure the
             // time of execution for such commands are not counted in the total elapsed time.
@@ -93,7 +96,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         // Get filename of html specification to be used to retrieve the start time of the run
         String fileNameHtml = runSuccessEvent.getElement().getAttributeValue("href").replace(".md", ".html");
 
-        // Calculate the time elasped of the specific run commnad
+        // Calculate the time elapsed of the specific run commnad
         Long timeElapsed = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
 
         // Write the time elapsed to the root element
@@ -105,7 +108,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         // Get filename of html specification to be used to retrieve the start time of the run
         String fileNameHtml = runFailureEvent.getElement().getAttributeValue("href").replace(".md", ".html");
 
-        // Calculate the time elasped of the specific run commnad
+        // Calculate the time elapsed of the specific run commnad
         Long timeElapsed = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
 
         // Write the time elapsed to the root element
@@ -117,7 +120,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         // Get filename of html specification to be used to retrieve the start time of the run
         String fileNameHtml = runIgnoreEvent.getElement().getAttributeValue("href").replace(".md", ".html");
 
-        // Calculate the time elasped of the specific run commnad
+        // Calculate the time elapsed of the specific run command
         Long timeElapsed = System.currentTimeMillis() - runStartTimes.get(fileNameHtml);
 
         // Write the time elapsed to the root element
@@ -138,7 +141,7 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     private void writeRunTotalTime(Element element, Long duration) {
         Element durationTag = new Element("span");
         durationTag.addAttribute("class", "time-fig-inline");
-        durationTag.appendText(" (" + TimeFormatter.formatMillSec(duration) + ")");
+        durationTag.appendText(" (" + timeFormatter.formatTime(duration) + ")");
         element.appendSister(durationTag);
     }
 }

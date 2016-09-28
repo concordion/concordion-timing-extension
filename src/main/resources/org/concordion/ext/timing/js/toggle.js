@@ -10,7 +10,6 @@ window.onload = function() {
 
         for (var i = 0; i < timings.length; i++) {
             var timing = timings[i];
-            console.log(timing);
 
             if (timing.style.display === "none") {
                 timing.style.display = "block";
@@ -32,7 +31,6 @@ window.onload = function() {
 
         for (var i = 0; i < timings.length; i++) {
             var timing = timings[i];
-            console.log(timing);
 
             if (timing.style.display === "none") {
                 timing.style.display = "inline";
