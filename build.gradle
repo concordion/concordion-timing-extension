@@ -5,11 +5,6 @@ description = 'An extension to Concordion that adds timings'
 ext {
     developers = {
         developer {
-            id 'nigel.charman'
-            name 'Nigel Charman'
-        }
-
-        developer {
             id 'david.barnett'
             name 'David Barnett'
         }
