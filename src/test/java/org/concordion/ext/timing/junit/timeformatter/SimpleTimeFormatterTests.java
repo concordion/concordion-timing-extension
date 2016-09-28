@@ -1,7 +1,7 @@
-package org.concordion.ext.timing.junit.footer;
+package org.concordion.ext.timing.junit.timeformatter;
 
 import org.concordion.ext.timing.TimerExtension;
-import org.concordion.ext.timing.footer.TimeFormatter;
+import org.concordion.ext.timing.timeformatter.TimeFormatter;
 import org.junit.Assert;
 import org.junit.Test;
 

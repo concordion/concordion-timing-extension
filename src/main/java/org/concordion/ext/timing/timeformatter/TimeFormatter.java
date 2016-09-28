@@ -1,4 +1,4 @@
-package org.concordion.ext.timing.footer;
+package org.concordion.ext.timing.timeformatter;
 
 /**
  * Utility class for formatting time
@@ -8,7 +8,7 @@ public class TimeFormatter {
     private static String hourWord = "h";
     private static String minuteWord = "m";
     private static String secondWord = "s";
-    private static String milisecWord = "ms";
+    private static String millisecondWord = "ms";
 
     private TimeFormatter() {
         throw new IllegalAccessError();
@@ -34,18 +34,18 @@ public class TimeFormatter {
         } else if (minutes > 0) {
             return String.format("%d%s %d%s", minutes, minuteWord, seconds % 60, secondWord);
         } else if (seconds > 0) {
-            return String.format("%d%s %d%s", seconds, secondWord, millSec % 1000, milisecWord);
+            return String.format("%d%s %d%s", seconds, secondWord, millSec % 1000, millisecondWord);
         } else {
-            return String.format("%d%s", millSec, milisecWord);
+            return String.format("%d%s", millSec, millisecondWord);
         }
 
     }
 
-    public static void setFormatString(String hours, String mins, String secs, String miliSecs){
+    public static void setFormatString(String hours, String minutes, String secs, String miliSecs){
         TimeFormatter.hourWord = hours;
-        TimeFormatter.minuteWord = mins;
+        TimeFormatter.minuteWord = minutes;
         TimeFormatter.secondWord = secs;
-        TimeFormatter.milisecWord = miliSecs;
+        TimeFormatter.millisecondWord = miliSecs;
     }
 
 
