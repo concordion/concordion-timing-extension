@@ -79,6 +79,8 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         // creates <img> tag for the clickable icon that toggles the timing data
         Element toggleIcon = new Element("img");
         toggleIcon.setId("toggleImg");
+        toggleIcon.addStyleClass("time-toggle-button");
+        toggleIcon.addStyleClass("time-toggle-button-on");
         toggleIcon.addAttribute("src", event.getResource().getRelativePath(iconResource));
         toggleIcon.addAttribute("height", "24");
         toggleIcon.addAttribute("width", "24");
