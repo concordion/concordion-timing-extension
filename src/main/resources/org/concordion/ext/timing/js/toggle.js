@@ -1,50 +1,36 @@
 window.onload = function() {
 
     var toggleButton = document.getElementById("toggleImg");
-    toggleButton.style.backgroundColor = "#F5F9FD";
-    toggleButton.style.border = "1px solid #C3D9FF";
-    toggleButton.style.padding = "4px"
+
     toggleButton.onclick = function() {
 
-        var timings = document.getElementsByClassName("time-fig");
+        var display = false;
+        // check to see if the button has the class with the on styling
+        if (toggleButton.classList.contains("time-toggle-button-on")) {
+            // show it as off
+            toggleButton.classList.remove("time-toggle-button-on");
+        } else {
+            // show it as on
+            toggleButton.classList.add("time-toggle-button-on");
+            display = true;
+        }
 
-        for (var i = 0; i < timings.length; i++) {
-            var timing = timings[i];
-
-            if (timing.style.display === "none") {
-                timing.style.display = "block";
-                toggleButton.style.backgroundColor = "#F5F9FD";
-                toggleButton.style.border = "1px solid #C3D9FF";
-                toggleButton.style.padding = "4px"
-
-            } else {
-                timing.style.display = "none";
-                toggleButton.style.backgroundColor = "white";
-                toggleButton.style.border = "";
-                toggleButton.style.padding = "5px";
-
-            }
-         }
-
-
-        var timings = document.getElementsByClassName("time-fig-inline");
-
-        for (var i = 0; i < timings.length; i++) {
-            var timing = timings[i];
-
-            if (timing.style.display === "none") {
-                timing.style.display = "inline";
-                toggleButton.style.backgroundColor = "#F5F9FD";
-                toggleButton.style.border = "1px solid #C3D9FF";
-                toggleButton.style.padding = "4px"
-            } else {
-                timing.style.display = "none";
-                toggleButton.style.backgroundColor = "white";
-                toggleButton.style.border = "";
-                toggleButton.style.padding = "5px";
-            }
-         }
+        // update the time figures to reflect the state of the button
+        toggleTiming(display);
     };
-
-
 };
+
+function toggleTiming(show) {
+
+    var timings = document.getElementsByClassName("time-fig");
+    var timing;
+    for (var i = 0; timing = timings[i]; i++) {
+        timing.style.display = show ? "block" : "none";
+    }
+
+    timings = document.getElementsByClassName("time-fig-inline");
+
+    for (var i = 0; timing = timings[i]; i++) {
+        timing.style.display = show ? "inline" : "none";
+    }
+}
