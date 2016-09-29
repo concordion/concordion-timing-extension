@@ -34,8 +34,14 @@ window.onload = function() {
 
             if (timing.style.display === "none") {
                 timing.style.display = "inline";
+                toggleButton.style.backgroundColor = "#F5F9FD";
+                toggleButton.style.border = "1px solid #C3D9FF";
+                toggleButton.style.padding = "4px"
             } else {
                 timing.style.display = "none";
+                toggleButton.style.backgroundColor = "white";
+                toggleButton.style.border = "";
+                toggleButton.style.padding = "5px";
             }
          }
     };

@@ -12,11 +12,13 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
     private Map<String, Long> exampleStartTimes; // Stores the start time of each example
     private static Map<String, Long> runStartTimes = new ConcurrentHashMap<String, Long>(); // Stores the start time of each run
     private final TimeFormatter timeFormatter;
+    private final Resource iconResource;
 
-    public TimerSpecificationListener(TimeFormatter timeFormatter) {
+    public TimerSpecificationListener(TimeFormatter timeFormatter, Resource icon) {
         // Initialise Variables
         exampleStartTimes = new HashMap<String, Long>();
         this.timeFormatter = timeFormatter;
+        iconResource = icon;
     }
 
     @Override
@@ -77,10 +79,9 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         // creates <img> tag for the clickable icon that toggles the timing data
         Element toggleIcon = new Element("img");
         toggleIcon.setId("toggleImg");
-        toggleIcon.addAttribute("src", "../toggleIcon.png");
+        toggleIcon.addAttribute("src", event.getResource().getRelativePath(iconResource));
         toggleIcon.addAttribute("height", "24");
         toggleIcon.addAttribute("width", "24");
-
         // ensures it goes nowhere
 
         //toggleContainer.appendChild(toggleButton);

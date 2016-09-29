@@ -17,7 +17,7 @@ public class TimerSpecificationListenerTests {
     public void TimerHasCorrectClass() {
 
         // Arrange
-        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter());
+        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter(), null);
         ResultSummary summary = new SingleResultSummary(Result.SUCCESS);
         ExampleEvent event = new ExampleEvent("Test", new Element("div"), summary);
 
@@ -36,7 +36,7 @@ public class TimerSpecificationListenerTests {
         // Arrange
         Element html = new Element("html");
         html.appendChild(new Element("body"));
-        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter());
+        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter(), new Resource("/"));
         SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/"), html);
 
         // Act
@@ -55,7 +55,7 @@ public class TimerSpecificationListenerTests {
     public void RunCommand_RunSuccess_Test() {
 
         // Initialize Concordion Listeners
-        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter());
+        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter(), null);
         ResultSummary summary = new SingleResultSummary(Result.SUCCESS);
 
         // Create Elements to emulate a HTML file.
@@ -93,7 +93,7 @@ public class TimerSpecificationListenerTests {
     public void RunCommand_RunFailure_Test() {
 
         // Initialize Concordion Listeners
-        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter());
+        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter(), null);
         ResultSummary summary = new SingleResultSummary(Result.SUCCESS);
 
         // Create Elements to emulate a HTML file.
@@ -131,7 +131,7 @@ public class TimerSpecificationListenerTests {
     public void RunCommand_RunIgnore_Test() {
 
         // Initialize Concordion Listeners
-        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter());
+        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter(), null);
         ResultSummary summary = new SingleResultSummary(Result.SUCCESS);
 
         // Create Elements to emulate a HTML file.
