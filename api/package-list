@@ -1,2 +1,2 @@
 org.concordion.ext.timing
-org.concordion.ext.timing.footer
+org.concordion.ext.timing.timeformatter

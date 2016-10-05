@@ -2,9 +2,31 @@
     overflow: hidden;
 }
 
+#toggle-button img {
+    float: right;
+}
+
+#toggle-button img:hover{
+    cursor: pointer;
+}
+
+#toggle-button img.cog{
+    float: left;
+}
+
 #toggle-button a {
     float: right;
     margin: 0;
+}
+
+.time-toggle-button {
+    padding: 5px;
+}
+
+.time-toggle-button-on {
+    background-color: #F5F9FD;
+    border: 1px solid #C3D9FF;
+    padding: 4px;
 }
 
 .time-fig {
@@ -17,3 +39,4 @@
     color: gray;
     font-style: italic;
 }
+
