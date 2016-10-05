@@ -48,7 +48,7 @@ public class TimerExtension implements ConcordionExtension {
      *
      * @param timeFormat an implementation of a TimeFormatter
      */
-    public ConcordionExtension withTimeFormat(TimeFormatter timeFormat){
+    public ConcordionExtension withTimeFormatter(TimeFormatter timeFormat){
         this.timeFormatter = timeFormat;
         return this;
     }
