@@ -5,9 +5,30 @@ description = 'An extension to Concordion that adds timings'
 ext {
     developers = {
         developer {
-            id 'nigel.charman'
-            name 'Nigel Charman'
+            id 'david.barnett'
+            name 'David Barnett'
         }
+
+        developer {
+            id 'andrew.daly'
+            name 'Andrew Daly'
+        }
+
+        developer {
+            id 'prashant.bhikhu'
+            name 'Prashant Bhikhu'
+        }
+
+        developer {
+            id 'steven.turrell'
+            name 'Steven Turrell'
+        }
+
+        developer {
+            id 'andrew.mooney'
+            name 'Andrew Mooney'
+        }
+
     }
     inceptionYear = '2016'
 }

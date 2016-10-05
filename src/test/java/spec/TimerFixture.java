@@ -1,5 +1,7 @@
 package spec;
 
+import org.concordion.api.extension.ConcordionExtension;
+import org.concordion.api.extension.Extension;
 import org.concordion.api.extension.Extensions;
 import org.concordion.api.option.ConcordionOptions;
 import org.concordion.ext.timing.TimerExtension;
@@ -10,8 +12,10 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 @RunWith(value = ConcordionRunner.class)
-@Extensions(value = TimerExtension.class)
 public class TimerFixture {
+
+    @Extension
+    ConcordionExtension TimingExtension = new TimerExtension().withIcon("/org/concordion/ext/timing/Resource/stopwatch.png");
 
     public void timeLong() {
         try {

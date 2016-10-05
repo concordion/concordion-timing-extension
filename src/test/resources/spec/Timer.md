@@ -21,6 +21,7 @@ Inputing null into the name field is [invalid](- "c:assert-false=checkFirstNameA
 
 Inputing [Pr@sh@nt]( - "#firstName") into the name field is [invalid](- "c:assert-false=checkFirstName(#firstName)").
 
+
 ### [Validate email](- "example 2")
 
 Inputing [foooooooooo]( - "#email") is [invalid](- "c:assert-false=checkEmail(#email)").
