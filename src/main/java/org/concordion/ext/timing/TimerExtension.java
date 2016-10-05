@@ -22,7 +22,6 @@ public class TimerExtension implements ConcordionExtension {
     public void addTo(ConcordionExtender extender) {
         TimerSpecificationListener timerSpec = new TimerSpecificationListener(timeFormatter, toggleIconResource);
 
-        extender.withRunListener(timerSpec);
         extender.withSpecificationProcessingListener(timerSpec);
         extender.withExampleListener(timerSpec);
 
