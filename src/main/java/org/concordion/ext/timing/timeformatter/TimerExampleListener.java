@@ -29,6 +29,33 @@ public class TimerExampleListener implements ExampleListener {
         long startTime = exampleStartTimes.get(event.getExampleName());
         long elapsed = (System.currentTimeMillis() - startTime);
 
+
+        System.out.println("KD: "+event.getElement().toXML());
+        System.out.println("KD2: "+event.getElement().getLocalName());
+        System.out.println("KD2A: "+ event.getResultSummary().isForExample());
+        System.out.println("KD2B: "+ event.getResultSummary().getSpecificationDescription());
+        System.out.println("KD2C: "+ event.getResultSummary().getImplementationStatus());
+        System.out.println("KD3: "+ timeFormatter.formatTime(elapsed));
+
+        if(event.getElement().getLocalName().equalsIgnoreCase("td")) {
+            return;
+        }
+
+
+        if(event.getElement().getLocalName().equalsIgnoreCase("tr")) {
+            Element tde = new Element("td");
+            tde.addAttribute("align", "right");
+            tde.addStyleClass("time-fig");
+
+            Element tde_p = new Element("p");
+            tde_p.appendText(timeFormatter.formatTime(elapsed));
+            tde.appendChild(tde_p);
+
+            event.getElement().appendChild(tde);
+
+            System.out.println("KD4:" + event.getElement().getParentElement().toXML());
+            return;
+        }
         // creates new <div> container for styling the elapsed time
         Element timingContainer = new Element("div");
         timingContainer.addStyleClass("time-fig");
