@@ -37,4 +37,10 @@ function toggleTiming(show) {
     for (var i = 0; timing = timings[i]; i++) {
         timing.style.display = show ? "inline" : "none";
     }
+
+    timings = document.getElementsByClassName("time-fig-table-cell");
+
+        for (var i = 0; timing = timings[i]; i++) {
+            timing.style.display = show ? "table-cell" : "none";
+        }
 }

@@ -45,7 +45,7 @@ public class TimerExampleListener implements ExampleListener {
         if(event.getElement().getLocalName().equalsIgnoreCase("tr")) {
             Element tde = new Element("td");
             tde.addAttribute("align", "right");
-            tde.addStyleClass("time-fig");
+            tde.addStyleClass("time-fig-table-cell");
 
             Element tde_p = new Element("p");
             tde_p.appendText(timeFormatter.formatTime(elapsed));
