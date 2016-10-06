@@ -15,22 +15,6 @@ import java.io.IOError;
 
 public class TimerSpecificationListenerTests {
 
-    @Test
-    public void TimerHasCorrectClass() {
-
-        // Arrange
-        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter(), null);
-        ResultSummary summary = new SingleResultSummary(Result.SUCCESS);
-        ExampleEvent event = new ExampleEvent("Test", new Element("div"), summary);
-
-        // Act
-        listener.beforeExample(event);
-        listener.afterExample(event);
-
-        // Assert
-        Element timingContainer = event.getElement().getFirstDescendantNamed("div");
-        Assert.assertEquals("Container's class is 'time-fig'", "time-fig", timingContainer.getAttributeValue("class"));
-    }
 
     @Test
     public void ToggleButtonHasCorrectId() {
@@ -38,7 +22,7 @@ public class TimerSpecificationListenerTests {
         // Arrange
         Element html = new Element("html");
         html.appendChild(new Element("body"));
-        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter(), new Resource("/"));
+        TimerSpecificationListener listener = new TimerSpecificationListener(new Resource("/"));
         SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/"), html);
 
         // Act
@@ -106,7 +90,7 @@ public class TimerSpecificationListenerTests {
         Element html = new Element("html");
         html.appendChild(new Element("body"));
 
-        TimerSpecificationListener listener = new TimerSpecificationListener(new SimpleTimeFormatter(), new Resource(iconPath));
+        TimerSpecificationListener listener = new TimerSpecificationListener(new Resource(iconPath));
         SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource(specificationPath), html);
 
         // Act

@@ -25,7 +25,7 @@ function toggleTiming(show) {
     var timings = document.getElementsByClassName("time-fig");
     var timing;
     for (var i = 0; timing = timings[i]; i++) {
-        timing.style.display = show ? "block" : "none";
+        timing.style.display = show ? "inherit" : "none";
     }
 
     timings = document.getElementsByClassName("time-fig-inline");
