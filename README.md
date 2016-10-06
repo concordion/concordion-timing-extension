@@ -11,8 +11,50 @@ Often it is useful to know how long a given example takes to run. This extension
 timing to screen for each example. The functionality can be toggled on or off via a toggle button located at the top
 right of the results screen.
 
-# Further info
+## How to install
 
+Add to `dependencies`
+
+```groovy
+ testCompile 'org.concordion:concordion-timing-extension:0.2.0'
+```
+## How to use
+
+Add to your test fixture on of these options
+
+With no configuration
+
+```java
+@Extensions(value = TimerExtension.class)
+```
+
+With comprehensive configuration
+
+```java
+@Extension
+ConcordionExtension TimingExtension = new TimerExtension()
+    .withIcon("/path/to/icon.png")
+    .withTimeFormat(new SimpleTimeFormatter(" hours", " minutes", " seconds", " milliseconds"));
+```
+
+# Features
+
+## Timings per example
+
+ ![Example timing](images/example-timing.jpg)
+
+
+## Customisable timing format and toggle icon
+
+ ![Customised Example](images/customised-example.jpg)
+
+## Toggle display of timings
+
+ ![Customised Example](images/toggle-display.jpg)
+
+
+
+# Further info
 
 <!-- * [Specification](https://github.com/concordion/concordion-timing-extension-demo/spec/spec/concordion/ext/storyboard/Storyboard.html) -->
 <!-- * [API](http://concordion.github.io/concordion-storyboard-extension/api/index.html) -->
