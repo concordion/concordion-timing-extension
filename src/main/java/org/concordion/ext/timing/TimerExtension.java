@@ -37,7 +37,7 @@ public class TimerExtension implements ConcordionExtension {
      * @param newIconPath is the path to the toggle icon image you wish to use.
      * @return Returns the extension with the changed toggle icon.
      */
-    public ConcordionExtension withIcon(String newIconPath) {
+    public TimerExtension withIcon(String newIconPath) {
         toggleIconPath = newIconPath;
         return this;
     }
@@ -49,7 +49,7 @@ public class TimerExtension implements ConcordionExtension {
      *
      * @param timeFormat an implementation of a TimeFormatter
      */
-    public ConcordionExtension withTimeFormatter(TimeFormatter timeFormat){
+    public TimerExtension withTimeFormatter(TimeFormatter timeFormat){
         this.timeFormatter = timeFormat;
         return this;
     }
