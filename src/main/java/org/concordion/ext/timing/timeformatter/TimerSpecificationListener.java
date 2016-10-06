@@ -6,55 +6,18 @@ import org.concordion.api.listener.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class TimerSpecificationListener implements SpecificationProcessingListener, ExampleListener  {
+public class TimerSpecificationListener implements SpecificationProcessingListener   {
 
-    private Map<String, Long> exampleStartTimes; // Stores the start time of each example
-    private final TimeFormatter timeFormatter;
     private final Resource iconResource;
 
-    public TimerSpecificationListener(TimeFormatter timeFormatter, Resource icon) {
+    public TimerSpecificationListener(Resource icon) {
         // Initialise Variables
-        exampleStartTimes = new HashMap<String, Long>();
-        this.timeFormatter = timeFormatter;
         iconResource = icon;
     }
 
-    @Override
-    public void beforeExample(ExampleEvent event) {
-        // Store the starting time when a example is started
-        exampleStartTimes.put(event.getExampleName(), System.currentTimeMillis());
-    }
-
-    @Override
-    public void afterExample(ExampleEvent event) {
-        // Generation the time elapsed since start time for the specific example
-        long startTime = exampleStartTimes.get(event.getExampleName());
-        long elapsed = (System.currentTimeMillis() - startTime);
-
-        // creates new <div> container for styling the elapsed time
-        Element timingContainer = new Element("div");
-        timingContainer.addStyleClass("time-fig");
-
-        // creates <p> tag for holding the elapsed time
-        Element timingOut = new Element("p");
-
-        // Adds the elapsed time to the <p> tag if the event was caused by an example
-        timingOut.appendText(timeFormatter.formatTime(elapsed));
-
-        // Add the timing duration to the timing container
-        // (as the duration cannot be added directly to the root element)
-        timingContainer.appendChild(timingOut);
-
-        // add it to the bottom of the example HTML
-        event.getElement().appendChild(timingContainer);
-    }
 
     @Override
     public void beforeProcessingSpecification(SpecificationProcessingEvent event) {
-        //getPath() includes the /spec/ folder which we cant retrieve later so it it removed from path
-        String path = event.getResource().getPath();
-        int i = path.indexOf("/",1);
-        path = path.substring(i+1);
     }
 
     @Override

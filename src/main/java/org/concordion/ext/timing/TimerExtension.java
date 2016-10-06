@@ -5,6 +5,7 @@ import org.concordion.api.extension.ConcordionExtender;
 import org.concordion.api.extension.ConcordionExtension;
 import org.concordion.ext.timing.timeformatter.SimpleTimeFormatter;
 import org.concordion.ext.timing.timeformatter.TimeFormatter;
+import org.concordion.ext.timing.timeformatter.TimerExampleListener;
 import org.concordion.ext.timing.timeformatter.TimerSpecificationListener;
 
 /**
@@ -20,10 +21,11 @@ public class TimerExtension implements ConcordionExtension {
 
     @Override
     public void addTo(ConcordionExtender extender) {
-        TimerSpecificationListener timerSpec = new TimerSpecificationListener(timeFormatter, toggleIconResource);
+        TimerSpecificationListener specificationListener = new TimerSpecificationListener(toggleIconResource);
+        TimerExampleListener exampleListener = new TimerExampleListener(timeFormatter);
 
-        extender.withSpecificationProcessingListener(timerSpec);
-        extender.withExampleListener(timerSpec);
+        extender.withSpecificationProcessingListener(specificationListener);
+        extender.withExampleListener(exampleListener);
 
         extender.withLinkedCSS("/org/concordion/ext/timing/css/style.css", new Resource("/timingExtensionStyle.css"));
         extender.withLinkedJavaScript("/org/concordion/ext/timing/js/toggle.js", new Resource("/timingExtensionToggle.js"));
