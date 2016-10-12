@@ -18,15 +18,15 @@ public class TimerExtension implements ConcordionExtension {
     private TimeFormatter timeFormatter = new SimpleTimeFormatter();
     private String toggleIconPath = "/org/concordion/ext/timing/Resource/stopwatch.png";
     private Resource toggleIconResource = new Resource("/toggleIcon.png");
+    private boolean showByDefault = true;
 
     @Override
     public void addTo(ConcordionExtender extender) {
-        TimerSpecificationListener specificationListener = new TimerSpecificationListener(toggleIconResource);
+        TimerSpecificationListener specificationListener = new TimerSpecificationListener(toggleIconResource, showByDefault);
         TimerExampleListener exampleListener = new TimerExampleListener(timeFormatter);
 
         extender.withSpecificationProcessingListener(specificationListener);
         extender.withExampleListener(exampleListener);
-
         extender.withLinkedCSS("/org/concordion/ext/timing/css/style.css", new Resource("/timingExtensionStyle.css"));
         extender.withLinkedJavaScript("/org/concordion/ext/timing/js/toggle.js", new Resource("/timingExtensionToggle.js"));
         extender.withResource(toggleIconPath , toggleIconResource);
@@ -51,6 +51,18 @@ public class TimerExtension implements ConcordionExtension {
      */
     public TimerExtension withTimeFormatter(TimeFormatter timeFormat){
         this.timeFormatter = timeFormat;
+        return this;
+    }
+
+    /**
+     * Option to configure if the timings are shown by default without
+     * a press to the toggle button
+     *
+     * @param show
+     * @return
+     */
+    public TimerExtension withShowByDefault(boolean show) {
+        showByDefault = show;
         return this;
     }
 }
