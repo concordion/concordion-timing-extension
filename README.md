@@ -33,6 +33,7 @@ With comprehensive configuration
 ```java
 @Extension
 ConcordionExtension TimingExtension = new TimerExtension()
+    .withShowByDefault(true)
     .withIcon("/path/to/icon.png")
     .withTimeFormat(new SimpleTimeFormatter(" hours", " minutes", " seconds", " milliseconds"));
 ```
@@ -51,9 +52,7 @@ ConcordionExtension TimingExtension = new TimerExtension()
 ## Toggle display of timings
 
  ![Customised Example](images/toggle-display.jpg)
-
-
-
+ 
 # Further info
 
 <!-- * [Specification](https://github.com/concordion/concordion-timing-extension-demo/spec/spec/concordion/ext/storyboard/Storyboard.html) -->
