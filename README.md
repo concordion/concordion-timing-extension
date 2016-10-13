@@ -55,14 +55,18 @@ ConcordionExtension TimingExtension = new TimerExtension()
 
 
 # Other Extension Compatibility 
+
 ##  Compatible Extensions
+
 - [Parallel Runnner Extension](https://github.com/concordion/concordion-parallel-run-extension)
 - [Run Totals Extension](https://github.com/concordion/concordion-parallel-run-extension)
 - [Screenshot Extension](https://github.com/concordion/concordion-screenshot-extension)
 - [Storyboard Extension](https://github.com/concordion/concordion-storyboard-extension)
 - [Input Style Extension](https://github.com/concordion/concordion-input-style-extension)
-- [Timestamp Formatter](https://github.com/concordion/concordion-timestamp-formatter-extension)
+- [Timestamp Formatter Extension](https://github.com/concordion/concordion-timestamp-formatter-extension)
+
 ##  Incompatible Extensions
+
 - [Excel Alternative Specificiation Type Extension](https://github.com/concordion/concordion-excel-extension/)
 
 
