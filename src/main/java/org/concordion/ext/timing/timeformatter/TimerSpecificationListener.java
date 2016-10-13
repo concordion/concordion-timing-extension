@@ -14,7 +14,6 @@ public class TimerSpecificationListener implements SpecificationProcessingListen
         this.showByDefault = showByDefault;
     }
 
-
     @Override
     public void beforeProcessingSpecification(SpecificationProcessingEvent event) {
     }

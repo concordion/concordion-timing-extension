@@ -25,10 +25,30 @@ public class TimerExampleListener implements ExampleListener {
 
     @Override
     public void afterExample(ExampleEvent event) {
-        // Generation the time elapsed since start time for the specific example
+        // Generate the time elapsed since start time for the specific example
         long startTime = exampleStartTimes.get(event.getExampleName());
         long elapsed = (System.currentTimeMillis() - startTime);
 
+        //bugfix stopping additional 0ms time in row first column
+        if(event.getElement().getLocalName().equalsIgnoreCase("td")) {
+            return;
+        }
+
+
+        if(event.getElement().getLocalName().equalsIgnoreCase("tr")) {
+            Element tde = new Element("td");
+            tde.addAttribute("align", "right");
+            tde.addStyleClass("time-fig-table-cell");
+
+            Element tde_p = new Element("p");
+            tde_p.appendText(timeFormatter.formatTime(elapsed));
+            tde.appendChild(tde_p);
+
+            event.getElement().appendChild(tde);
+
+            System.out.println("KD4:" + event.getElement().getParentElement().toXML());
+            return;
+        }
         // creates new <div> container for styling the elapsed time
         Element timingContainer = new Element("div");
         timingContainer.addStyleClass("time-fig");
