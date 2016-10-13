@@ -22,7 +22,7 @@ public class TimerSpecificationListenerTests {
         // Arrange
         Element html = new Element("html");
         html.appendChild(new Element("body"));
-        TimerSpecificationListener listener = new TimerSpecificationListener(new Resource("/"));
+        TimerSpecificationListener listener = new TimerSpecificationListener(new Resource("/"), true);
         SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/"), html);
 
         // Act
@@ -35,6 +35,48 @@ public class TimerSpecificationListenerTests {
                 .getFirstChildElement("div");
         Assert.assertEquals("Container's id is 'toggle-button'", "toggle-button",
                 timingContainer.getAttributeValue("id"));
+    }
+
+    @Test
+    public void ToggleButtonIsOn() {
+
+        // Arrange
+        Element html = new Element("html");
+        html.appendChild(new Element("body"));
+        TimerSpecificationListener listener = new TimerSpecificationListener(new Resource("/"), true);
+        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/"), html);
+
+        // Act
+        listener.beforeProcessingSpecification(event);
+        listener.afterProcessingSpecification(event);
+
+        // Assert
+        Element timingImage = event.getRootElement()
+                .getFirstChildElement("body")
+                .getFirstChildElement("div")
+                .getFirstChildElement("img");
+        Assert.assertTrue(timingImage.getAttributeValue("class").contains("time-toggle-button-on"));
+    }
+
+    @Test
+    public void ToggleButtonIsOff() {
+
+        // Arrange
+        Element html = new Element("html");
+        html.appendChild(new Element("body"));
+        TimerSpecificationListener listener = new TimerSpecificationListener(new Resource("/"), false);
+        SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource("/"), html);
+
+        // Act
+        listener.beforeProcessingSpecification(event);
+        listener.afterProcessingSpecification(event);
+
+        // Assert
+        Element timingImage = event.getRootElement()
+                .getFirstChildElement("body")
+                .getFirstChildElement("div")
+                .getFirstChildElement("img");
+        Assert.assertFalse(timingImage.getAttributeValue("class").contains("time-toggle-button-on"));
     }
 
     private Element buildRunElement() {
@@ -90,7 +132,7 @@ public class TimerSpecificationListenerTests {
         Element html = new Element("html");
         html.appendChild(new Element("body"));
 
-        TimerSpecificationListener listener = new TimerSpecificationListener(new Resource(iconPath));
+        TimerSpecificationListener listener = new TimerSpecificationListener(new Resource(iconPath), true);
         SpecificationProcessingEvent event = new SpecificationProcessingEvent(new Resource(specificationPath), html);
 
         // Act
