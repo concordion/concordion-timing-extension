@@ -49,8 +49,8 @@ repositories {
 }
 
 dependencies {
-    compile 'org.concordion:concordion:2.0.4'
-    testCompile 'org.concordion:concordion:2.0.4:tests'
+    compile 'org.concordion:concordion:2.1.0'
+    testCompile 'org.concordion:concordion:2.1.0:tests'
 }
 
 compileJava {

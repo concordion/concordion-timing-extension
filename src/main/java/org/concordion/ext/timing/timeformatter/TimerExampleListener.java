@@ -25,18 +25,11 @@ public class TimerExampleListener implements ExampleListener {
 
     @Override
     public void afterExample(ExampleEvent event) {
-        // Generation the time elapsed since start time for the specific example
+        // Generate the time elapsed since start time for the specific example
         long startTime = exampleStartTimes.get(event.getExampleName());
         long elapsed = (System.currentTimeMillis() - startTime);
 
-
-        System.out.println("KD: "+event.getElement().toXML());
-        System.out.println("KD2: "+event.getElement().getLocalName());
-        System.out.println("KD2A: "+ event.getResultSummary().isForExample());
-        System.out.println("KD2B: "+ event.getResultSummary().getSpecificationDescription());
-        System.out.println("KD2C: "+ event.getResultSummary().getImplementationStatus());
-        System.out.println("KD3: "+ timeFormatter.formatTime(elapsed));
-
+        //bugfix stopping additional 0ms time in row first column
         if(event.getElement().getLocalName().equalsIgnoreCase("td")) {
             return;
         }
