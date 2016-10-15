@@ -20,7 +20,9 @@ Add to `dependencies`
 ```
 ## How to use
 
-Add to your test fixture on of these options
+For the timings to show on examples, you must be using the example command in your specification ([Markdown format](http://concordion.org/instrumenting/java/markdown/#example-command), [HTML format](http://concordion.org/instrumenting/java/html/#example-command)).
+
+Add to your test fixture one of these options
 
 With no configuration
 
