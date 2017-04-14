@@ -7,16 +7,16 @@ The [demo project](https://github.com/concordion/concordion-timing-extension-dem
 
 # Introduction
 
-Often it is useful to know how long a given example takes to run. This extension provides this by printing the
-timing to screen for each example. The functionality can be toggled on or off via a toggle button located at the top
-right of the results screen.
+Often it is useful to know how long a given example or specification takes to run. This extension provides this by printing the
+timing to screen for each example and specification that is run. The functionality can be toggled on or off via a toggle button located at the top
+right of the output specification.
 
 ## How to install
 
 Add to `dependencies`
 
 ```groovy
- testCompile 'org.concordion:concordion-timing-extension:0.2.0'
+ testCompile 'org.concordion:concordion-timing-extension:1.1.0'
 ```
 ## How to use
 
@@ -36,7 +36,8 @@ With comprehensive configuration
 @Extension
 ConcordionExtension TimingExtension = new TimerExtension()
     .withShowByDefault(true)
-    .withIcon("/path/to/icon.png")
+    .withOnIcon("/path/to/icon-on.png")
+    .withOffIcon("/path/to/icon-off.png")
     .withTimeFormat(new SimpleTimeFormatter(" hours", " minutes", " seconds", " milliseconds"));
 ```
 
@@ -44,7 +45,7 @@ ConcordionExtension TimingExtension = new TimerExtension()
 
 ## Timings per example
 
- ![Example timing](images/example-timing.jpg)
+ ![Example timing](images/example-timing.png)
 
 
 ## Customisable timing format and toggle icon

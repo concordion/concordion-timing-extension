@@ -37,6 +37,8 @@ public class TimerExtension implements ConcordionExtension {
 
     /**
      * This method  allows the user to be able to change the icon they use for toggling the timing text.
+     * This uses a single icon, which is highlighted when on; as opposed to the {@link #withOnIcon(String)} and
+     * {@link #withOffIcon(String)} methods which use different icons for on and off.
      * @param newIconPath is the path to the toggle icon image you wish to use.
      * @return Returns the extension with the changed toggle icon.
      */

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class TimerFixture {
 
     @Extension
-    ConcordionExtension TimingExtension = new TimerExtension().withIcon("/org/concordion/ext/timing/img/stopwatch.png")
+    ConcordionExtension TimingExtension = new TimerExtension()//.withIcon("/org/concordion/ext/timing/img/stopwatch.png")
 //            .withShowByDefault(false);
 ;
     public void timeLong() {
