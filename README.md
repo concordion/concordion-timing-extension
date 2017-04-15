@@ -19,6 +19,9 @@ Add to `dependencies`
 ```groovy
  testCompile 'org.concordion:concordion-timing-extension:1.1.0'
 ```
+
+This requires Concordion 2.1.0 or later.
+
 ## How to use
 
 For the timings to show on examples, you must be using the example command in your specification ([Markdown format](http://concordion.org/instrumenting/java/markdown/#example-command), [HTML format](http://concordion.org/instrumenting/java/html/#example-command)).
