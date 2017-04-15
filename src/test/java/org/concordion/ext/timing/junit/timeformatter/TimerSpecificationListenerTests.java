@@ -2,16 +2,11 @@ package org.concordion.ext.timing.junit.timeformatter;
 
 import org.concordion.api.Element;
 import org.concordion.api.Resource;
-import org.concordion.api.Result;
-import org.concordion.api.ResultSummary;
-import org.concordion.api.listener.*;
-import org.concordion.ext.timing.timeformatter.SimpleTimeFormatter;
+import org.concordion.api.listener.AbstractRunEvent;
+import org.concordion.api.listener.SpecificationProcessingEvent;
 import org.concordion.ext.timing.timeformatter.TimerSpecificationListener;
-import org.concordion.internal.SingleResultSummary;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.io.IOError;
 
 public class TimerSpecificationListenerTests {
 

@@ -2,7 +2,6 @@ package spec;
 
 import org.concordion.api.extension.ConcordionExtension;
 import org.concordion.api.extension.Extension;
-
 import org.concordion.ext.timing.TimerExtension;
 import org.concordion.ext.timing.timeformatter.SimpleTimeFormatter;
 import org.concordion.integration.junit4.ConcordionRunner;

@@ -1,7 +1,9 @@
 package org.concordion.ext.timing.timeformatter;
 
-import org.concordion.api.*;
-import org.concordion.api.listener.*;
+import org.concordion.api.Element;
+import org.concordion.api.Resource;
+import org.concordion.api.listener.SpecificationProcessingEvent;
+import org.concordion.api.listener.SpecificationProcessingListener;
 
 public class TimerSpecificationListener implements SpecificationProcessingListener   {
 
