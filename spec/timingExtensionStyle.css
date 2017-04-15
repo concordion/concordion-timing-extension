@@ -10,10 +10,6 @@
     cursor: pointer;
 }
 
-#toggle-button img.cog{
-    float: left;
-}
-
 #toggle-button a {
     float: right;
     margin: 0;
@@ -40,3 +36,14 @@
     font-style: italic;
 }
 
+.time-fig-table-cell p {
+    float: right;
+    margin: 0;
+    color: gray;
+    font-style: italic;
+}
+
+.time-run {
+    color: gray;
+    font-style: italic;
+}

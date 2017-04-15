@@ -1,22 +1,24 @@
 window.onload = function() {
 
-    var toggleButton = document.getElementById("toggleImg");
-    toggleButton.onclick = handleToggle;
+    var toggleOn = document.getElementById("toggle-on");
+    toggleOn.onclick = handleToggle;
+    var toggleOff = document.getElementById("toggle-off");
+    toggleOff.onclick = handleToggle;
 
-    toggleTiming(toggleButton.classList.contains("time-toggle-button-on"));
+    toggleTiming(toggleOn.style.display == "none");
 };
 
 function handleToggle() {
     var display = false;
-    var toggleButton = document.getElementById("toggleImg");
+    var toggleOn = document.getElementById("toggle-on");
+    var toggleOff = document.getElementById("toggle-off");
 
-    // check to see if the button has the class with the on styling
-    if (toggleButton.classList.contains("time-toggle-button-on")) {
-        // show it as off
-        toggleButton.classList.remove("time-toggle-button-on");
+    if (toggleOn.style.display == "none") {
+        toggleOn.style.display = "block";
+        toggleOff.style.display = "none";
     } else {
-        // show it as on
-        toggleButton.classList.add("time-toggle-button-on");
+        toggleOn.style.display = "none";
+        toggleOff.style.display = "block";
         display = true;
     }
 
@@ -32,9 +34,15 @@ function toggleTiming(show) {
         timing.style.display = show ? "inherit" : "none";
     }
 
-    timings = document.getElementsByClassName("time-fig-inline");
+    timings = document.getElementsByClassName("time-run");
 
     for (var i = 0; timing = timings[i]; i++) {
         timing.style.display = show ? "inline" : "none";
     }
+
+    timings = document.getElementsByClassName("time-fig-table-cell");
+
+        for (var i = 0; timing = timings[i]; i++) {
+            timing.style.display = show ? "table-cell" : "none";
+        }
 }
