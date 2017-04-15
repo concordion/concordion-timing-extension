@@ -47,6 +47,13 @@ ConcordionExtension TimingExtension = new TimerExtension()
 
  ![Example timing](images/example-timing.png)
 
+## Timings per example on table
+
+ ![Table timing](images/table-timing.png)
+ 
+ ## Timings on run command
+ 
+  ![Run timing](images/run-timing.png)
 
 ## Customisable timing format and toggle icon
 
