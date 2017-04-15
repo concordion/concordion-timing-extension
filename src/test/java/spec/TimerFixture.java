@@ -12,9 +12,9 @@ import java.util.regex.Pattern;
 public class TimerFixture {
 
     @Extension
-    ConcordionExtension TimingExtension = new TimerExtension().withIcon("/org/concordion/ext/timing/Resource/stopwatch.png")
-            .withShowByDefault(false);
-
+    ConcordionExtension TimingExtension = new TimerExtension()//.withIcon("/org/concordion/ext/timing/img/stopwatch.png")
+//            .withShowByDefault(false);
+;
     public void timeLong() {
         try {
             Thread.sleep(1000);
