@@ -42,9 +42,10 @@ ext {
     inceptionYear = '2016'
 }
 
-githubPages {
+gitPublish {
     repoUri = 'git@github.com:concordion/concordion-timing-extension.git'
-    pages {
+    branch = 'gh-pages'
+	contents {
         from ('build/reports/spec/') {
             into 'spec'
         }
