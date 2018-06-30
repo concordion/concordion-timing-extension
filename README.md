@@ -24,9 +24,9 @@ This requires Concordion 2.1.0 or later.
 
 ## How to use
 
-For the timings to show on examples, you must be using the example command in your specification ([Markdown format](http://concordion.org/instrumenting/java/markdown/#example-command), [HTML format](http://concordion.org/instrumenting/java/html/#example-command)).
+For the timings to show on examples, you must be using the example command in your specification ([Markdown format](https://concordion.org/instrumenting/java/markdown/#example-command), [HTML format](https://concordion.org/instrumenting/java/html/#example-command)).
 
-For the timings to show on examples on a table, you must be running each row as an example ([Markdown format](http://concordion.org/instrumenting/java/markdown/#run-each-row-as-an-example), [HTML format](http://concordion.org/instrumenting/java/html/#run-each-row-as-an-example)).
+For the timings to show on examples on a table, you must be running each row as an example ([Markdown format](https://concordion.org/instrumenting/java/markdown/#run-each-row-as-an-example), [HTML format](https://concordion.org/instrumenting/java/html/#run-each-row-as-an-example)).
 
 Add to your test fixture one of these options:
 
