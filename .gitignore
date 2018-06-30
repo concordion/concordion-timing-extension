@@ -1,6 +1,23 @@
-.idea/
-.gradle/
-*.class
-out/
+# Gradle
+.gradle
 build/
-classes/
+
+# Maven
+target/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# IDEA
+.idea/
+out/
+*.iml
+
+# VS Code
+.vscode/
+
+# Infer
+infer-out/
