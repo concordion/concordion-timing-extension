@@ -6,6 +6,7 @@ import org.concordion.api.ResultSummary;
 import org.concordion.api.listener.ExampleEvent;
 import org.concordion.ext.timing.timeformatter.SimpleTimeFormatter;
 import org.concordion.ext.timing.timeformatter.TimerExampleListener;
+import org.concordion.internal.FixtureInstance;
 import org.concordion.internal.SingleResultSummary;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +19,7 @@ public class TimerExampleListenerTests {
         // Arrange
         TimerExampleListener listener = new TimerExampleListener(new SimpleTimeFormatter());
         ResultSummary summary = new SingleResultSummary(Result.SUCCESS);
-        ExampleEvent event = new ExampleEvent("Test", new Element("div"), summary);
+        ExampleEvent event = new ExampleEvent("Test", new Element("div"), summary, new FixtureInstance(this));
 
         // Act
         listener.beforeExample(event);
