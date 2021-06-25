@@ -2,15 +2,6 @@ apply from: 'https://raw.githubusercontent.com/concordion/concordion-extension-b
 
 description = 'An extension to Concordion that adds timings'
 
-repositories {
-    mavenLocal()
-}
-
-dependencies {
-    compile 'org.concordion:concordion:2.1.0'
-    testCompile 'org.concordion:concordion:2.1.0:tests'
-}
-
 ext {
     developers = {
         developer {
@@ -40,34 +31,4 @@ ext {
 
     }
     inceptionYear = '2016'
-}
-
-gitPublish {
-    repoUri = 'git@github.com:concordion/concordion-timing-extension.git'
-    branch = 'gh-pages'
-	contents {
-        from ('build/reports/spec/') {
-            into 'spec'
-        }
-
-        from('build/docs/javadoc/') {
-            into 'api'
-        }
-    }
-}
-
-
-sourceSets {
-    test {
-        resources { srcDirs += 'src/test/java' }
-    }
-}
-
-test.dependsOn cleanTest
-test {
-    systemProperties['concordion.output.dir'] = "$reporting.baseDir/spec"
-    outputs.upToDateWhen { false } // force it to run even if test code hasn't changed
-    testLogging {
-        events "passed", "skipped", "failed", "standardError"
-    }
 }
