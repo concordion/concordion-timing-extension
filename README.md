@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/concordion/concordion-timing-extension.svg?branch=master)](https://travis-ci.com/concordion/concordion-timing-extension)
+[![Build and Test](https://github.com/concordion/concordion-timing-extension/actions/workflows/ci.yml/badge.svg)](https://github.com/concordion/concordion-timing-extension/actions/workflows/ci.yml)
 [![Apache License 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 This [Concordion](http://www.concordion.org) extension provides the capability to embed the processing time
